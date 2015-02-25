@@ -1,0 +1,32 @@
+digraph G {
+node [shape=box];
+"chasis" [label="chasis"];
+"leg1link0" [label="leg1link0"];
+"leg1link1" [label="leg1link1"];
+"leg1link2" [label="leg1link2"];
+"leg1link3" [label="leg1link3"];
+"leg1link4" [label="leg1link4"];
+"leg1link5" [label="leg1link5"];
+"leg2link0" [label="leg2link0"];
+"leg2link1" [label="leg2link1"];
+"leg2link2" [label="leg2link2"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"chasis" -> "leg1joint0" [label="xyz: -1.035 -1.125 0 \nrpy: 0 -0 0"]
+"leg1joint0" -> "leg1link0"
+"leg1link0" -> "leg1joint1" [label="xyz: 0.86 1.03 0.17 \nrpy: 0 -0 0"]
+"leg1joint1" -> "leg1link1"
+"leg1link1" -> "leg1joint2" [label="xyz: -0.01 0 0.04 \nrpy: 0 -0 0"]
+"leg1joint2" -> "leg1link2"
+"leg1link2" -> "leg1joint3" [label="xyz: 0 0.06 -0.02 \nrpy: 0 -0 0"]
+"leg1joint3" -> "leg1link3"
+"leg1link3" -> "leg1joint4" [label="xyz: -0.04 -0.02 -0.08 \nrpy: 0 -0 0"]
+"leg1joint4" -> "leg1link4"
+"leg1link4" -> "leg1joint5" [label="xyz: 0.02 -0.04 -0.02 \nrpy: 0 -0 0"]
+"leg1joint5" -> "leg1link5"
+"chasis" -> "leg2joint0" [label="xyz: -1.035 -0.925 0 \nrpy: 0 -0 0"]
+"leg2joint0" -> "leg2link0"
+"leg2link0" -> "leg2joint1" [label="xyz: 0.86 1.03 0.17 \nrpy: 0 -0 0"]
+"leg2joint1" -> "leg2link1"
+"leg2link1" -> "leg2joint2" [label="xyz: -0.01 0 0.04 \nrpy: 0 -0 0"]
+"leg2joint2" -> "leg2link2"
+}

@@ -1,0 +1,42 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find daedalus_control)/config/daedalus_control_xacro.yaml" command="load"/>
+  
+  <!-- load the controllers -->
+  <node name="controller_manager" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/daedalus" 
+    args="joint_state_controller
+    
+    	  leg1joint1_position_controller
+    	  leg1joint2_position_controller 
+    	  leg1joint3_position_controller
+    	  leg1joint4_position_controller 
+    	  leg1joint5_position_controller 
+    	  
+    	  leg2joint1_position_controller
+    	  leg2joint2_position_controller 
+    	  leg2joint3_position_controller
+    	  leg2joint4_position_controller 
+    	  leg2joint5_position_controller 
+    	  
+    	  leg3joint1_position_controller
+    	  leg3joint2_position_controller 
+    	  leg3joint3_position_controller
+    	  leg3joint4_position_controller 
+    	  leg3joint5_position_controller 
+    	  
+    	  leg4joint1_position_controller
+    	  leg4joint2_position_controller 
+    	  leg4joint3_position_controller
+    	  leg4joint4_position_controller 
+    	  leg4joint5_position_controller 
+    	  
+    	  "/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <!--<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/Daedalus/joint_states" />
+  </node>-->
+</launch>

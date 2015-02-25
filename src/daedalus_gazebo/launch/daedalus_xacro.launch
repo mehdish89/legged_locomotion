@@ -1,0 +1,17 @@
+<launch>
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find daedalus_gazebo)/worlds/daedalus.world"/>
+    <!-- more default parameters can be changed here -->
+  </include>
+  <param name="robot_description"
+	 command="$(find xacro)/xacro.py '$(find daedalus_description)/urdf/daedalus.xacro'" />
+  <!-- Spawn a robot into Gazebo -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"  output="screen" args=" -urdf -z 0.5 -model daedalus -param robot_description" />
+  
+  <!-- ros_control rrbot launch file -->
+  <include file="$(find daedalus_control)/launch/daedalus_control_xacro.launch" />
+  
+  <node name="gui_publisher" pkg="rqt_publisher" type="rqt_publisher" respawn="false" output="screen" />
+  
+</launch>
