@@ -2,31 +2,50 @@
 <robot>
 
   <!-- ros_control plugin -->
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/rrbot</robotNamespace>
-      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-    </plugin>
-  </gazebo>
+  
+  	<macro name="leg_finish" params="suffix">
+		  
+		  <!-- Link0 -->
+		  <gazebo reference="leg${suffix}link0">
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
+			<material>Gazebo/Black</material>
+		  </gazebo>
 
-  <!-- Link1 -->
-  <gazebo reference="leg1link1">
-    <material>Gazebo/Orange</material>
-  </gazebo>
+		  <!-- Link1 -->
+		  <gazebo reference="leg${suffix}link1">
+			<material>Gazebo/Orange</material>
+		  </gazebo>
 
-  <!-- Link2 -->
-  <gazebo reference="leg1link2">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Black</material>
-  </gazebo>
+		  <!-- Link2 -->
+		  <gazebo reference="leg${suffix}link2">
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
+			<material>Gazebo/Black</material>
+		  </gazebo>
 
-  <!-- Link3 -->
-  <gazebo reference="leg1link3">
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
-    <material>Gazebo/Orange</material>
-  </gazebo>
+		  <!-- Link3 -->
+		  <gazebo reference="leg${suffix}link3">
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
+			<material>Gazebo/Orange</material>
+		  </gazebo>
+		  
+		  <!-- Link4 -->
+		  <gazebo reference="leg${suffix}link4">
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
+			<material>Gazebo/Black</material>
+		  </gazebo>
+		  
+		  <!-- Link5 -->
+		  <gazebo reference="leg${suffix}link5">
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
+			<material>Gazebo/Orange</material>
+		  </gazebo>
+		  
+	</macro>
 
 
 </robot>

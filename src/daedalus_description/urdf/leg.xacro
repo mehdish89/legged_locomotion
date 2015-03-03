@@ -1,14 +1,22 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:include filename="$(find daedalus_description)/urdf/daedalus.gazebo" />
+	<xacro:include filename="$(find daedalus_description)/urdf/materials.xacro" />
+		
+	<xacro:property name="scale" value="0.01" />
+
 	<macro name="leg" params="suffix parent *origin">
 	
+	<leg_finish suffix="${suffix}"/>
     
     <link name="leg${suffix}link0">
+    	<self_collide>1</self_collide>
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-          <mass value="${4.72639954 * const}"/>
-        <inertia ixx="3.76702192" ixy="0" ixz="0" iyy="5.02939053" iyz="0" izz="0.104767786"/>
+          <mass value="${47.264202 * const}"/>
+        <inertia ixx="${92.924561*scale}" ixy="0" ixz="0" iyy="${112.408630*scale}" iyz="0" izz="${106.058662*scale}"/>
       </inertial>
       <collision name="collision">
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -24,10 +32,12 @@
       </visual>
     </link>
     <link name="leg${suffix}link1">
+    	<self_collide>1</self_collide>
+    	
       <inertial>
         <origin xyz="0.837170246 1.0317214 0.161524277" rpy="0 0 0"/>
-        <mass value="${6.23121787 * const}"/>
-        <inertia ixx="4.36786663" ixy="0" ixz="0" iyy="6.63326988" iyz="0" izz="0.164683289"/>
+        <mass value="${62.343552 * const}"/>
+        <inertia ixx="${256.757294*scale}" ixy="${0.461719*scale}" ixz="${40.230606*scale}" iyy="${280.351624*scale}" iyz="${-1.692201*scale}" izz="${114.922241*scale}"/>
       </inertial>
       <collision name="collision">
         <origin xyz="-0.86 -1.03 -0.17" rpy="0 0 0"/>
@@ -46,8 +56,8 @@
       <self_collide>1</self_collide>
       <inertial>
         <origin xyz="-0.017799314 0.04493617  -0.002242117" rpy="0 0 0"/>
-        <mass value="${7.32147232 * const}"/>
-        <inertia ixx="5.071313" ixy="0" ixz="0" iyy="8.46231008" iyz="0" izz="0.316663829"/>
+        <mass value="${73.212067 * const}"/>
+        <inertia ixx="${308.272949*scale}" ixy="0" ixz="0" iyy="${141.348206*scale}" iyz="${-6.197227*scale}" izz="${320.700867*scale}"/>
       </inertial>
       <collision name="collision">
         <origin xyz="-0.85 -1.03 -0.21" rpy="0 0 0"/>
@@ -66,8 +76,8 @@
       <self_collide>1</self_collide>
       <inertial>
         <origin xyz=" -0.0177993  -0.0027828  -0.0402923" rpy="0 0 0"/>
-        <mass value="${4.31132052  * const}"/>
-        <inertia ixx="2.98629222" ixy="0" ixz="0" iyy="5.09630234" iyz="0" izz="0.0982604921"/>
+        <mass value="${43.109013  * const}"/>
+        <inertia ixx="${177.687561*scale}" ixy="0" ixz="0" iyy="${208.616043*scale}" iyz="${-14.718610*scale}" izz="${59.618698*scale}"/>
       </inertial>
       <collision name="collision">
         <origin xyz="-0.85 -1.09 -0.19" rpy="0 0 0"/>
@@ -86,8 +96,8 @@
       <self_collide>1</self_collide>
       <inertial>
         <origin xyz="0.0230260  -0.0192363  -0.0096265" rpy="0 0 0"/>
-        <mass value="${7.90197358 * const}"/>
-        <inertia ixx="5.48411837" ixy="0" ixz="0" iyy="8.72903423" iyz="0" izz="0.0812723132"/>
+        <mass value="${79.043472 * const}"/>
+        <inertia ixx="${609.197083*scale}" ixy="${13.511174*scale}" ixz="${-5.220560*scale}" iyy="${234.447556*scale}" iyz="${179.840118*scale}" izz="${511.354614*scale}"/>
       </inertial>
       <collision name="collision">
         <origin xyz="-0.81 -1.07 -0.11" rpy="0 0 0"/>
@@ -106,8 +116,8 @@
       <self_collide>1</self_collide>
       <inertial>
         <origin xyz="0.0019165   0.0104236  -0.0496145" rpy="0 0 0"/>
-        <mass value="${6.55679875 * const}"/>
-        <inertia ixx="4.53905844" ixy="0" ixz="0" iyy="7.09980012" iyz="0" izz="0.012361989"/>
+        <mass value="${65.552696 * const}"/>
+        <inertia ixx="${385.638153*scale}" ixy="${-0.223889*scale}" ixz="${-13.452513*scale}" iyy="${286.320038*scale}" iyz="${-3.575976*scale}" izz="${338.489807*scale}"/>
       </inertial>
       <collision name="collision">
         <origin xyz="-0.83 -1.03 -0.09" rpy="0 0 0"/>
