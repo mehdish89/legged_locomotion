@@ -5,17 +5,17 @@
             <author>VCGLab</author>
             <authoring_tool>VCGLib | MeshLab</authoring_tool>
         </contributor>
-        <created>Sun Apr 26 21:18:04 2015</created>
-        <modified>Sun Apr 26 21:18:04 2015</modified>
+        <created>Sat Jan 31 00:05:56 2015</created>
+        <modified>Sat Jan 31 00:05:56 2015</modified>
         <up_axis>Y_UP</up_axis>
     </asset>
     <library_geometries>
         <geometry id="shape0-lib" name="shape0">
             <mesh>
                 <source id="shape0-lib-positions" name="position">
-                    <float_array id="shape0-lib-positions-array" count="54">0.01775 -0.00955999 0.0193 0.01775 -0.0371 0.0015 -0.01775 -0.0371 0.0015 0.01775 0.00150001 0.0193 -0.01775 0.00150001 0.0193 -0.01775 -0.00955999 0.0193 0.01775 0.0193001 -0.0193 -0.01775 0.0193001 -0.0193 -0.01775 0.00150001 -0.0163 0.01775 -0.00955999 -0.0163 0.01775 0.00150001 -0.00830001 0.01775 0.00150001 -0.0163 0.01775 0.0371001 0.0193 0.01775 0.0371001 -0.00830001 -0.01775 0.0371001 -0.00830001 -0.01775 0.0371001 0.0193 -0.01775 -0.00955999 -0.0163 -0.01775 0.00150001 -0.00830001</float_array>
+                    <float_array id="shape0-lib-positions-array" count="30">-0.00379747 -0.0178 0.01775 -0.00379747 0.0178 0.01775 -0.0236665 0 -0.01775 0.0236665 0.0178 -0.01775 -0.00379747 -0.0178 -0.01775 -0.0236665 0 0.01775 0.0236665 -0.0178 -0.01775 0.0236665 -0.0178 0.01775 0.0236665 0.0178 0.01775 -0.00379747 0.0178 -0.01775</float_array>
                     <technique_common>
-                        <accessor count="18" source="#shape0-lib-positions-array" stride="3">
+                        <accessor count="10" source="#shape0-lib-positions-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
@@ -23,9 +23,9 @@
                     </technique_common>
                 </source>
                 <source id="shape0-lib-normals" name="normal">
-                    <float_array id="shape0-lib-normals-array" count="96">0 -0.542822 0.839848 0 -0.542822 0.839848 0 -0.542822 -0.839848 0 -0.542822 -0.839848 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 0.525697 -0.850672 0 0.525697 -0.850672 0 -0.525694 -0.850674 0 -0.525694 -0.850674 0 0 -1 0 0 -1 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0</float_array>
+                    <float_array id="shape0-lib-normals-array" count="48">0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 -0.667262 -0.744824 0 -0.667262 -0.744824 0 0 -1 0 0 -1 0 1 0 0 1 0 0 0 1 0 0 1 0 -0.667262 0.744824 0 -0.667262 0.744824 0</float_array>
                     <technique_common>
-                        <accessor count="32" source="#shape0-lib-normals-array" stride="3">
+                        <accessor count="16" source="#shape0-lib-normals-array" stride="3">
                             <param name="X" type="float"/>
                             <param name="Y" type="float"/>
                             <param name="Z" type="float"/>
@@ -35,10 +35,10 @@
                 <vertices id="shape0-lib-vertices">
                     <input semantic="POSITION" source="#shape0-lib-positions"/>
                 </vertices>
-                <triangles count="32">
+                <triangles count="16">
                     <input offset="0" semantic="VERTEX" source="#shape0-lib-vertices"/>
                     <input offset="1" semantic="NORMAL" source="#shape0-lib-normals"/>
-                    <p>0 0 5 0 2 0 0 1 2 1 1 1 9 2 1 2 2 2 9 3 2 3 16 3 17 4 10 4 11 4 17 5 11 5 8 5 0 6 3 6 4 6 0 7 4 7 5 7 15 8 4 8 3 8 15 9 3 9 12 9 12 10 13 10 14 10 12 11 14 11 15 11 13 12 6 12 7 12 13 13 7 13 14 13 6 14 10 14 17 14 6 15 17 15 7 15 8 16 11 16 9 16 8 17 9 17 16 17 1 18 9 18 10 18 9 19 11 19 10 19 10 20 0 20 1 20 12 21 3 21 10 21 12 22 10 22 13 22 6 23 13 23 10 23 0 24 10 24 3 24 8 25 16 25 17 25 14 26 7 26 17 26 17 27 4 27 15 27 17 28 15 28 14 28 2 29 5 29 17 29 4 30 17 30 5 30 16 31 2 31 17 31</p>
+                    <p>0 0 1 0 5 0 0 1 7 1 8 1 0 2 8 2 1 2 4 3 2 3 9 3 4 4 9 4 3 4 4 5 3 5 6 5 4 6 0 6 5 6 4 7 5 7 2 7 6 8 7 8 0 8 6 9 0 9 4 9 3 10 8 10 7 10 3 11 7 11 6 11 9 12 1 12 8 12 9 13 8 13 3 13 2 14 5 14 1 14 2 15 1 15 9 15</p>
                 </triangles>
             </mesh>
         </geometry>

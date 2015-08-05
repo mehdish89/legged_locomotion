@@ -7,7 +7,7 @@
 		
 	<xacro:property name="scale" value="0.01" />
 
-	<macro name="leg" params="suffix parent flipped *origin">
+	<macro name="right_leg" params="suffix parent *origin">
 	
 	<leg_finish suffix="${suffix}"/>
     
@@ -75,18 +75,18 @@
     <link name="leg${suffix}link3">
       <self_collide>1</self_collide>
       <inertial>
-        <origin xyz=" 0 -0.0041 -0.0371" rpy="0 0 0"/>
+        <origin xyz=" -0.0177993  -0.0027828  -0.0402923" rpy="0 0 0"/>
         <mass value="${43.109013  * const}"/>
         <inertia ixx="${177.687561*scale}" ixy="0" ixz="0" iyy="${208.616043*scale}" iyz="${-14.718610*scale}" izz="${59.618698*scale}"/>
       </inertial>
       <collision name="collision">
-        <origin xyz="0 -0.0041 -0.0371" rpy="0 0 0"/>
+        <origin xyz="-0.85 -1.09 -0.19" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://daedalus_description/meshes/link3.dae"/>
         </geometry>
       </collision>
       <visual name="visual">
-        <origin xyz="0 -0.0041 -0.0371" rpy="0 0 0"/>
+        <origin xyz="-0.85 -1.09 -0.19" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://daedalus_description/meshes/link3.dae"/>
         </geometry>
@@ -95,18 +95,18 @@
     <link name="leg${suffix}link4">
       <self_collide>1</self_collide>
       <inertial>
-        <origin xyz="0.0002  -0.0233 -0.0124" rpy="0 0 0"/>
+        <origin xyz="0.0230260  -0.0192363  -0.0096265" rpy="0 0 0"/>
         <mass value="${79.043472 * const}"/>
         <inertia ixx="${609.197083*scale}" ixy="${13.511174*scale}" ixz="${-5.220560*scale}" iyy="${234.447556*scale}" iyz="${179.840118*scale}" izz="${511.354614*scale}"/>
       </inertial>
       <collision name="collision">
-        <origin xyz="0.0002  -0.0233 -0.0124" rpy="0 0 0"/>
+        <origin xyz="-0.81 -1.07 -0.11" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://daedalus_description/meshes/link4.dae"/>
         </geometry>
       </collision>
       <visual name="visual">
-        <origin xyz="0.0002  -0.0233 -0.0124" rpy="0 0 0"/>
+        <origin xyz="-0.81 -1.07 -0.11" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://daedalus_description/meshes/link4.dae"/>
         </geometry>
@@ -115,18 +115,18 @@
     <link name="leg${suffix}link5">
       <self_collide>1</self_collide>
       <inertial>
-        <origin xyz="-0.0006 -0.0009 -0.0311" rpy="0 0 0"/>
+        <origin xyz="0.0019165   0.0104236  -0.0496145" rpy="0 0 0"/>
         <mass value="${65.552696 * const}"/>
         <inertia ixx="${385.638153*scale}" ixy="${-0.223889*scale}" ixz="${-13.452513*scale}" iyy="${286.320038*scale}" iyz="${-3.575976*scale}" izz="${338.489807*scale}"/>
       </inertial>
       <collision name="collision">
-        <origin xyz="-0.0006 -0.0009 -0.0311" rpy="0 0 0"/>
+        <origin xyz="-0.83 -1.03 -0.09" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://daedalus_description/meshes/link5.dae"/>
         </geometry>
       </collision>
       <visual name="visual">
-        <origin xyz="-0.0006 -0.0009 -0.0311" rpy="0 0 0"/>
+        <origin xyz="-0.83 -1.03 -0.09" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://daedalus_description/meshes/link5.dae"/>
         </geometry>
@@ -145,36 +145,36 @@
       <origin xyz="-0.0249 0 0.0205" rpy="0 0 0"/>
       <child link="leg${suffix}link1"/>
       <parent link="leg${suffix}link0"/>"
-      <axis xyz="0 0 -1"/>
-      <limit lower="-1.57" upper="1.57" effort="100" velocity="10"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="0.5"/>
     </joint>
     <joint type="revolute" name="leg${suffix}joint2">
-      <origin xyz="-0.0309 0.0002 0.0381" rpy="${3.14159/2} 0 ${3.14159 * flipped}"/>
+      <origin xyz="-0.0309 0.0002 0.0381" rpy="0 0 0"/>
       <child link="leg${suffix}link2"/>
       <parent link="leg${suffix}link1"/>
-      <axis xyz="${1 - 2 * flipped} 0 0"/>
-      <limit lower="-1.57" upper="1.57" effort="100" velocity="10"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-0.45" upper="3.59" effort="100" velocity="0.5"/>
     </joint>
     <joint type="revolute" name="leg${suffix}joint3">
-      <origin xyz="0 0.0564 -0.0208" rpy="0 0 0"/>
+      <origin xyz="0.0177 0.058 -0.018" rpy="0 0 0"/>
       <child link="leg${suffix}link3"/>
       <parent link="leg${suffix}link2"/>
-      <axis xyz="${2 * flipped - 1} 0 0"/>
-      <limit lower="-1.57" upper="1.57" effort="100" velocity="10"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="0.5"/>
     </joint>
     <joint type="revolute" name="leg${suffix}joint4">
-      <origin xyz="0 -0.0171 -0.0742" rpy="${-3.14159/4} 0 0"/>
+      <origin xyz="-0.04 -0.02 -0.08" rpy="0 0 0"/>
       <child link="leg${suffix}link4"/>
       <parent link="leg${suffix}link3"/>
-      <axis xyz="${2 * flipped - 1} 0 0"/>
-      <limit lower="-1.57" upper="1.57" effort="100" velocity="10"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="0.5"/>
     </joint>
     <joint type="revolute" name="leg${suffix}joint5">
-      <origin xyz="-0.0004 -0.0411 -0.0248" rpy="0 0 0"/>
+      <origin xyz="0.02 -0.04 -0.02" rpy="0 0 0"/>
       <child link="leg${suffix}link5"/>
       <parent link="leg${suffix}link4"/>
       <axis xyz="0 1 0"/>
-      <limit lower="-1.57" upper="1.57" effort="100" velocity="10"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="0.5"/>
     </joint>
     
 <transmission name="tran1">

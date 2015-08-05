@@ -4,7 +4,7 @@ project(daedalus_control)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs message_generation genmsg control_msgs gazebo_msgs)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -40,11 +40,10 @@ find_package(catkin REQUIRED)
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+ add_message_files(
+   FILES
+   Stats.msg
+ )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -61,10 +60,11 @@ find_package(catkin REQUIRED)
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+ generate_messages(
+   DEPENDENCIES
+   std_msgs  # Or other packages containing msgs
+ )
+
 
 ###################################
 ## catkin specific configuration ##
@@ -79,6 +79,7 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES daedalus_control
 #  CATKIN_DEPENDS other_catkin_pkg
+CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
 )
 
@@ -96,7 +97,22 @@ catkin_package(
 # )
 
 ## Declare a cpp executable
-# add_executable(daedalus_control_node src/daedalus_control_node.cpp)
+add_executable(daedalus_control_mapper src/daedalus_control_mapper.cpp)
+target_link_libraries(daedalus_control_mapper ${catkin_LIBRARIES})
+add_dependencies(daedalus_control_mapper daedalus_control_mapper_generate_messages_cpp)
+
+add_executable(gait_controller src/gait_controller.cpp)
+target_link_libraries(gait_controller ${catkin_LIBRARIES})
+add_dependencies(gait_controller gait_controller_generate_messages_cpp)
+
+add_executable(gait_controller_robot src/gait_controller_robot.cpp)
+target_link_libraries(gait_controller_robot ${catkin_LIBRARIES})
+add_dependencies(gait_controller_robot gait_controller_robot_generate_messages_cpp)
+
+add_executable(gait_optimization src/gait_optimization.cpp)
+target_link_libraries(gait_optimization ${catkin_LIBRARIES})
+add_dependencies(gait_optimization gait_optimization_generate_messages_cpp)
+
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -154,3 +170,7 @@ catkin_package(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+## Mine for adding c++11
+list( APPEND CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS} -g -ftest-coverage -fprofile-arcs")
+

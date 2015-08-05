@@ -1,0 +1,35 @@
+﻿Volume = 0.000527722697 (+/- 1e-13) cubic meters
+Volume Centroid = 1.0481156,0.960656413,0.174605616 (+/- 1e-09,1e-10,1e-10)
+Volume Moments:
+   First Moments
+   x: 	0.000553114392 (+/- 1e-13)
+   y: 	0.000506960193 (+/- 1e-13)
+   z: 	9.21433469e-05 (+/- 1e-14)
+   Second Moments
+   xx: 	0.000585351064 (+/- 1e-13)
+   yy: 	0.000490016658 (+/- 1e-13)
+   zz: 	1.67660209e-05 (+/- 1e-14)
+   Product Moments
+   xy: 	0.000531352812 (+/- 1e-13)
+   yz: 	8.85182141e-05 (+/- 1e-14)
+   zx: 	9.65768585e-05 (+/- 1e-14)
+   Volume Moments of Inertia about World Coordinate Axes
+   Ix: 	0.000506782679 (+/- 1e-13)
+   Iy: 	0.000602117085 (+/- 1e-13)
+   Iz: 	0.00107536772 (+/- 1e-12)
+   Volume Radii of Gyration about World Coordinate Axes
+   Rx: 	0.979959201 (+/- 1e-10)
+   Ry: 	1.06816314 (+/- 1e-09)
+   Rz: 	1.42749834 (+/- 1e-09)
+   Volume Moments of Inertia about Centroid Coordinate Axes
+   Ix: 	3.67937224e-06 (+/- 1e-15)
+   Iy: 	6.30051625e-06 (+/- 1e-15)
+   Iz: 	8.62533842e-06 (+/- 1e-15)
+   Volume Principal Moments of Inertia about Centroid and Principal Axes
+   I1: 	5.62324122e-06 , 	 Direction ( 1, -2.86211065e-05 ,4.20058448e-06)
+   I2: 	3.00209721e-06 , 	 Direction ( 2.86208951e-05, 0.999999998 ,5.03178328e-05)
+   I3: 	6.77275028e-07 , 	 Direction ( -4.20202463e-06, -5.03177125e-05 ,0.999999999)
+   Volume Radii of Gyration about Centroid Coordinate Axes
+   Rx: 	0.0834995196 (+/- 1e-11)
+   Ry: 	0.109266034 (+/- 1e-10)
+   Rz: 	0.127845423 (+/- 1e-10)

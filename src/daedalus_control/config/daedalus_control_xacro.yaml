@@ -8,86 +8,86 @@ daedalus:
   leg1joint1_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg1joint1
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg1joint2_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg1joint2
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg1joint3_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg1joint3
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg1joint4_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg1joint4
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg1joint5_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg1joint5
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
     
   # Position Controllers for leg2 ---------------------------------------
   leg2joint1_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg2joint1
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg2joint2_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg2joint2
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg2joint3_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg2joint3
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg2joint4_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg2joint4
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg2joint5_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg2joint5
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
     
   # Position Controllers for leg3 ---------------------------------------
   leg3joint1_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg3joint1
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg3joint2_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg3joint2
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg3joint3_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg3joint3
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg3joint4_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg3joint4
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg3joint5_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg3joint5
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
     
   # Position Controllers for leg4 ---------------------------------------
   leg4joint1_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg4joint1
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg4joint2_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg4joint2
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg4joint3_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg4joint3
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg4joint4_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg4joint4
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
   leg4joint5_position_controller:
     type: effort_controllers/JointPositionController
     joint: leg4joint5
-    pid: {p: 1000.0, i: 0.01, d: 1000.0}
+    pid: {p: 2000.0, i: 100, d: 300}
