@@ -1,0 +1,1 @@
+rosrun moveit_ikfast create_ikfast_moveit_plugin.py daedalus LEG2 daedalus_ikfast_LEG2_plugin /home/meit/catkin_ws/src/daedalus/src/daedalus_ikfast_LEG2_plugin/src/daedalus_LEG2_ikfast_solver.cpp

@@ -4,7 +4,9 @@ project(daedalus_control)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs message_generation genmsg control_msgs gazebo_msgs)
+find_package(catkin REQUIRED COMPONENTS moveit_core moveit_ros_planning moveit_ros_planning_interface pluginlib cmake_modules roscpp rospy std_msgs message_generation genmsg control_msgs gazebo_msgs)
+
+find_package(Eigen REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -79,7 +81,11 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES daedalus_control
 #  CATKIN_DEPENDS other_catkin_pkg
-CATKIN_DEPENDS message_runtime
+CATKIN_DEPENDS 
+	message_runtime
+	moveit_core
+    moveit_ros_planning_interface
+    interactive_markers
 #  DEPENDS system_lib
 )
 
@@ -90,6 +96,8 @@ CATKIN_DEPENDS message_runtime
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
+
+include_directories(SYSTEM ${EIGEN_INCLUDE_DIRS})
 
 ## Declare a cpp library
 # add_library(daedalus_control
@@ -112,6 +120,12 @@ add_dependencies(gait_controller_robot gait_controller_robot_generate_messages_c
 add_executable(gait_optimization src/gait_optimization.cpp)
 target_link_libraries(gait_optimization ${catkin_LIBRARIES})
 add_dependencies(gait_optimization gait_optimization_generate_messages_cpp)
+
+
+add_executable(gait_controller_jspace src/gait_controller_jspace.cpp)
+target_link_libraries(gait_controller_jspace ${catkin_LIBRARIES})
+add_dependencies(gait_controller_jspace gait_controller_jspace_generate_messages_cpp)
+
 
 
 ## Add cmake target dependencies of the executable/library

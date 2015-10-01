@@ -1,0 +1,41 @@
+controller_list:
+  - name: daedalus/LEG1_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - leg1joint1
+      - leg1joint2
+      - leg1joint3
+      - leg1joint4
+      - leg1joint5
+  - name: daedalus/LEG2_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - leg2joint1
+      - leg2joint2
+      - leg2joint3
+      - leg2joint4
+      - leg2joint5
+  - name: daedalus/LEG3_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - leg3joint1
+      - leg3joint2
+      - leg3joint3
+      - leg3joint4
+      - leg3joint5
+  - name: daedalus/LEG4_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - leg4joint1
+      - leg4joint2
+      - leg4joint3
+      - leg4joint4
+      - leg4joint5

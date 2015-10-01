@@ -1,0 +1,61 @@
+daedalus:
+
+    LEG1_controller:
+        type: effort_controllers/JointTrajectoryController
+        joints:
+          - leg1joint1
+          - leg1joint2
+          - leg1joint3
+          - leg1joint4
+          - leg1joint5
+        gains: # Required because we're controlling an effort interface
+            leg1joint1: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg1joint2: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg1joint3: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg1joint4: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg1joint5: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+    
+    LEG2_controller:
+        type: effort_controllers/JointTrajectoryController
+        joints:
+          - leg2joint1
+          - leg2joint2
+          - leg2joint3
+          - leg2joint4
+          - leg2joint5
+        gains: # Required because we're controlling an effort interface
+            leg2joint1: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg2joint2: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg2joint3: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg2joint4: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg2joint5: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+
+    LEG3_controller:
+        type: effort_controllers/JointTrajectoryController
+        joints:
+          - leg3joint1
+          - leg3joint2
+          - leg3joint3
+          - leg3joint4
+          - leg3joint5
+        gains: # Required because we're controlling an effort interface
+            leg3joint1: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg3joint2: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg3joint3: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg3joint4: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg3joint5: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+
+    LEG4_controller:
+        type: effort_controllers/JointTrajectoryController
+        joints:
+          - leg4joint1
+          - leg4joint2
+          - leg4joint3
+          - leg4joint4
+          - leg4joint5
+        gains: # Required because we're controlling an effort interface
+            leg4joint1: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg4joint2: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg4joint3: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg4joint4: {p: 2000,  d: 300, i: 100, i_clamp: 1}
+            leg4joint5: {p: 2000,  d: 300, i: 100, i_clamp: 1}

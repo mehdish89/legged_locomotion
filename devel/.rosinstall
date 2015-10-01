@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/kaus/catkin_ws/devel/setup.sh
+    local-name: /home/meit/catkin_ws/src/daedalus/devel/setup.sh

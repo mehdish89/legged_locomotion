@@ -2,7 +2,7 @@
 <robot name="daedalus"
  xmlns:xacro="http://www.ros.org/wiki/xacro">    
 
-	<xacro:property name="const" value="0.1" />
+	<xacro:property name="const" value="0.2" />
 
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
@@ -11,8 +11,12 @@
   </gazebo>
   
 	<xacro:include filename="$(find daedalus_description)/urdf/leg.xacro" />
-	
-	
+
+    <link name="root"/>    
+       
+    <virtual_joint name="v_root" type="fixed" parent_frame="world" child_link="root" />
+
+
   	<link name="frame">
       
 	<inertial>
@@ -29,12 +33,18 @@
       </visual>	
   		
   	</link>
+    
   	
   	<gazebo reference="frame">
 		<mu1>0.2</mu1>
 		<mu2>0.2</mu2>
 		<material>Gazebo/Black</material>
 	</gazebo>
+
+    <joint type="fixed" name="r_root">
+      <child link="frame"/>
+      <parent link="root"/>
+    </joint>
  
 	<leg flipped="1" parent="frame" suffix="1">
 		<origin rpy="0 0 3.14" xyz="0.125 0.075 0"/>

@@ -14,6 +14,4 @@
   
   <node name="gui_publisher" pkg="rqt_publisher" type="rqt_publisher" respawn="false" output="screen" />
   
-  <remap from="test" to="top_left_5/state"/>
-  
 </launch>
