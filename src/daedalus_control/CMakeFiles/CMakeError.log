@@ -1,0 +1,53 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/meit/catkin_ws/src/daedalus/src/daedalus_control/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec1500740145/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1500740145.dir/build.make CMakeFiles/cmTryCompileExec1500740145.dir/build
+make[1]: Entering directory `/home/meit/catkin_ws/src/daedalus/src/daedalus_control/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/meit/catkin_ws/src/daedalus/src/daedalus_control/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1500740145.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1500740145.dir/CheckSymbolExists.c.o   -c /home/meit/catkin_ws/src/daedalus/src/daedalus_control/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec1500740145
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1500740145.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1500740145.dir/CheckSymbolExists.c.o  -o cmTryCompileExec1500740145 -rdynamic 
+CMakeFiles/cmTryCompileExec1500740145.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+make[1]: *** [cmTryCompileExec1500740145] Error 1
+make[1]: Leaving directory `/home/meit/catkin_ws/src/daedalus/src/daedalus_control/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec1500740145/fast] Error 2
+
+File /home/meit/catkin_ws/src/daedalus/src/daedalus_control/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/meit/catkin_ws/src/daedalus/src/daedalus_control/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec503591591/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec503591591.dir/build.make CMakeFiles/cmTryCompileExec503591591.dir/build
+make[1]: Entering directory `/home/meit/catkin_ws/src/daedalus/src/daedalus_control/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/meit/catkin_ws/src/daedalus/src/daedalus_control/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec503591591.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec503591591.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-2.8/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec503591591
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec503591591.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec503591591.dir/CheckFunctionExists.c.o  -o cmTryCompileExec503591591 -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [cmTryCompileExec503591591] Error 1
+make[1]: Leaving directory `/home/meit/catkin_ws/src/daedalus/src/daedalus_control/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec503591591/fast] Error 2
+
+

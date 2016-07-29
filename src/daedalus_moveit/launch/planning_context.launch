@@ -8,6 +8,8 @@
   <!-- Load universal robot description format (URDF) -->
   <param if="$(arg load_robot_description)" name="$(arg robot_description)" command="$(find xacro)/xacro.py '$(find daedalus_description)/urdf/daedalus.xacro'"/>
 
+  <!-- <param if="$(arg load_robot_description)" name="/daedalus/robot_description" command="$(find xacro)/xacro.py '$(find daedalus_description)/urdf/daedalus.xacro'"/> -->
+
   <!-- The semantic description that corresponds to the URDF -->
   <param name="$(arg robot_description)_semantic" textfile="$(find daedalus_moveit)/config/daedalus.srdf" />
   

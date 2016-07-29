@@ -1,6 +1,13 @@
-float32 effort
-float32 velocity
-float32 velocity_variation
-float32 leg_x
-float32 leg_y
-float32 leg_z
+uint32 iteration
+uint32 sample
+		
+float32 distance
+float32 stability
+float32 power
+float32 efficiency
+float32 rel
+float32 eff
+float32 wand
+
+uint32 msecs
+uint32 code

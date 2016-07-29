@@ -10,6 +10,8 @@
 #include <trajectory_msgs/JointTrajectoryPoint.h>
 #include <trajectory_msgs/JointTrajectory.h>
 
+#include "gazebo_msgs/ModelState.h"
+#include "gazebo_msgs/SetModelState.h"
 #include "gazebo_msgs/ModelStates.h"
 #include "gazebo_msgs/LinkStates.h"
 #include "sensor_msgs/JointState.h"
@@ -22,6 +24,17 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <dirent.h>
+
+#include <ga/GASimpleGA.h>	// we're going to use the simple GA
+#include <ga/GASStateGA.h>
+#include <ga/GA1DArrayGenome.h> // and the 2D binary string genome
+#include <ga/std_stream.h>
+
+
+#include <algorithm>
+#include <vector>
+#include <cstdlib>
+#include <cmath>
 
 
 using namespace std;
@@ -53,6 +66,29 @@ int kbhit(void)
 	}
 
 	return 0;
+}
+
+
+
+ros::ServiceClient client;
+
+void reset_world()
+{
+	gazebo_msgs::ModelState modelstate;
+	modelstate.model_name = (std::string) "daedalus";
+	modelstate.reference_frame = (std::string) "world";
+	modelstate.pose.position.x = 0;
+	modelstate.pose.position.y = 0;
+	modelstate.pose.position.z = 0;
+	modelstate.pose.orientation.x = 0;
+	modelstate.pose.orientation.y = 0;
+	modelstate.pose.orientation.z = 0;
+	modelstate.pose.orientation.w = 0;
+
+	
+	gazebo_msgs::SetModelState setmodelstate;
+	setmodelstate.request.model_state = modelstate;
+	client.call(setmodelstate);
 }
 
 
@@ -217,11 +253,21 @@ vector <robot_state::RobotStatePtr> interpolate(int leg, geometry_msgs::Pose fro
     
     int count = 0;
     for(int i=0;i<steps;i++) {
+    
+    	/*pose.orientation.x = 0;
+    pose.orientation.y = 0;
+    pose.orientation.z = 0;
+    pose.orientation.w = 1;*/
         
         geometry_msgs::Pose pose = from;
         pose.position.x += (to.position.x-from.position.x) * (i+1) / steps;
         pose.position.y += (to.position.y-from.position.y) * (i+1) / steps;
         pose.position.z += (to.position.z-from.position.z) * (i+1) / steps;
+    
+    	pose.orientation.x += (to.orientation.x-from.orientation.x) * (i+1) / steps;
+    	pose.orientation.y += (to.orientation.y-from.orientation.y) * (i+1) / steps;
+    	pose.orientation.z += (to.orientation.z-from.orientation.z) * (i+1) / steps;
+    	pose.orientation.w += (to.orientation.w-from.orientation.w) * (i+1) / steps;
     
         Eigen::Affine3d ee_pose;
         tf::poseMsgToEigen(pose, ee_pose);    
@@ -373,6 +419,7 @@ double rel;
 double meff = 0;
 
 bool new_vel = false;
+bool updated = false;
 
 void stateCallback(const gazebo_msgs::ModelStates::ConstPtr& msg)
 {
@@ -383,7 +430,7 @@ void stateCallback(const gazebo_msgs::ModelStates::ConstPtr& msg)
 	double vx = msg->twist[1].linear.x;
 	double vy = msg->twist[1].linear.y;
 	real_vel = sqrt(vx*vx+vy*vy);
-	
+	updated = true;
 	/*
 	daedalus_control::Stats m;
 	m.velocity = real_vel;
@@ -427,6 +474,11 @@ void show_result(Result result)
 
 Result measure(vector<double> gait, int count)
 {
+	reset_world();
+	updated = false;
+	while(!updated)
+		ros::spinOnce();
+
     double sx = gx, sy = gy, sr = gr;
 	double racc = 0;
 	int code = 0;
@@ -540,8 +592,124 @@ Gait improve(Gait gait, double range, int count=10)
 }
 
 
-int main(int argc, char **argv)
+float fitness(GAGenome& g) {
+	GA1DArrayGenome<float>  & genome = (GA1DArrayGenome<float>  &)g;
+	
+	vector<double> gait;
+	for(int i=0;i<genome.size();i++)
+		gait.push_back(genome[i]);
+	struct Result result = measure(gait, 10);
+	float score = objective(result);
+	return score;
+}
+
+
+void Init(GAGenome & g) {
+	int width = 7;
+	GA1DArrayGenome<float>  & genome = (GA1DArrayGenome<float>  &)g;
+	genome.length(width);
+	
+	genome[0] = GARandomFloat(3, 5);
+	genome[1] = GARandomFloat(0.02, 0.18);
+	genome[2] = GARandomFloat(-0.06, 0.14);
+	genome[3] = GARandomFloat(-0.06, 0.14);
+	genome[4] = GARandomFloat(0.06, 0.24);
+	genome[5] = GARandomFloat(0.06, 0.24);
+	genome[6] = GARandomFloat(0.06, 0.24);
+	
+	
+	//for(int i=0;i<width;i++)
+		//genome[i] = myvector[i];		
+}
+
+int Mutate(GAGenome& g, float pmut)
 {
+
+	if(pmut<=0 || GARandomFloat()>=pmut)
+		return 0;
+		
+	GA1DArrayGenome<float>  & genome = (GA1DArrayGenome<float>  &)g;
+		
+	double ranges[7] = {0.1, 0.01, 0.005, 0.005, 0.01, 0.01, 0.01};
+	
+	double coef = GARandomFloat();
+	
+	for(int i=0; i<genome.size(); i++){
+        double rnd = (GARandomFloat() * 2 - 1) * ranges[i] * coef;
+		genome[i]+=rnd;
+    }
+}
+
+int
+Crossover(const GAGenome& p1, const GAGenome& p2, GAGenome* c1, GAGenome* c2){
+	GA1DArrayGenome<float> &mom=(GA1DArrayGenome<float> &)p1;
+	GA1DArrayGenome<float> &dad=(GA1DArrayGenome<float> &)p2;
+	int n=0;
+	//unsigned int site = GARandomInt(0, mom.length());
+	//unsigned int len = mom.length() - site;
+	if(c1){
+		GA1DArrayGenome<float> &sis=(GA1DArrayGenome<float> &)*c1;
+		for(int i=0; i<mom.size(); i++){
+    		double rnd = GARandomFloat() * 2;
+			if(rnd>=1)
+				sis[i] = mom[i];
+			else
+				sis[i] = dad[i];
+		}		
+		n++;
+	}
+	if(c2){
+		GA1DArrayGenome<float> &bro=(GA1DArrayGenome<float> &)*c2;
+		for(int i=0; i<mom.size(); i++){
+    		bro[i] = (mom[i]+dad[i])/2;
+		}
+		n++;
+	}
+	return n;
+}
+
+
+void evolution()
+{
+  int width    = 7;
+  int popsize  = 30;
+  int ngen     = 500;
+  float pmut   = 0.5;
+  float pcross = 0.5;
+
+  GA1DArrayGenome<float> genome(width, fitness);
+  
+  genome.initializer(Init);
+  genome.mutator(Mutate);
+  genome.crossover(Crossover);
+
+// Now that we have the genome, we create the genetic algorithm and set
+// its parameters - number of generations, mutation probability, and crossover
+// probability.  And finally we tell it to evolve itself.
+
+  GASimpleGA ga(genome);
+  ga.populationSize(popsize);
+  ga.nGenerations(ngen);
+  ga.pMutation(pmut);
+  ga.pCrossover(pcross);
+  
+  //ga.pReplacement(0.50);
+  ga.scoreFilename("bog.dat");	// name of file for scores
+  ga.scoreFrequency(1);	// keep the scores of every 10th generation
+  ga.flushFrequency(1);	// specify how often to write the score to disk
+
+  ga.evolve();
+
+// Now we print out the best genome that the GA found.
+
+  cout << "The GA found:\n" << ga.statistics().bestIndividual() << "\n";
+  cout << "The GA found:\n" << ga.statistics() << "\n";
+
+}
+
+
+int main(int argc, char **argv)
+{	
     ros::init(argc, argv, "trajectory_executer");
     ros::NodeHandle node_handle;  
     ros::AsyncSpinner spinner(4);
@@ -558,6 +726,8 @@ int main(int argc, char **argv)
     kinematic_model = rml->getModel();
     const robot_state::JointModelGroup* joint_model_group = kinematic_model->getJointModelGroup("LEG1"); 
     
+	client = node_handle.serviceClient<gazebo_msgs::SetModelState>("/gazebo/set_model_state");
+    
     
     //validSpace(1);
     
@@ -567,10 +737,13 @@ int main(int argc, char **argv)
     
 
     //vector <double> gait = {3.9162, 0.105971, 0.0201888, -0.00657353, 0.05955, 0.218181, 0.165312};
-    vector <double> gait = {3.58855, 0.109522, -0.00298116, 0.0235867, 0.0446852, 0.226447, 0.228663 };
+    //vector <double> gait = {3.58855, 0.109522, -0.00298116, 0.0235867, 0.0446852, 0.226447, 0.228663 };
     srand(time(0));
     //measure(sample(gait, 2), 10);
 
+
+	// GA 
+	vector <double> gait = {3.90349, 0.121892, 0.0112327, 0.0646975, 0.0554138, 0.221226, 0.157776};
 
     while(ros::ok())
     {
@@ -589,6 +762,11 @@ int main(int argc, char **argv)
             if(key == 'r' || key == 'R')
                 restart();
             */
+            
+            if(key == 'e' || key == 'E'){
+            	evolution();
+            }
+            
             if(key == 'o' || key == 'O'){
             	double SAMPLING_RANGE = 4;
 	            for(int i=0;i<8;i++){

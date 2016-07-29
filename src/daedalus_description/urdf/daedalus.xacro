@@ -2,13 +2,15 @@
 <robot name="daedalus"
  xmlns:xacro="http://www.ros.org/wiki/xacro">    
 
-	<xacro:property name="const" value="0.2" />
+	<!--xacro:property name="const" value="0.2" /-->
+	<xacro:property name="const" value="1e-2" />
+	<!-- <xacro:property name="const" value="0.01" /> -->
 
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/daedalus</robotNamespace>
-    </plugin>
-  </gazebo>
+	<gazebo>
+	    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+	      <robotNamespace>/daedalus</robotNamespace>
+	    </plugin>
+	</gazebo>
   
 	<xacro:include filename="$(find daedalus_description)/urdf/leg.xacro" />
 
@@ -22,22 +24,39 @@
 	<inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
           <mass value="${240.264202 * const}"/>
-        <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+        <inertia ixx="0.000367" ixy="0" ixz="0" iyy="0.000630" iyz="0" izz="0.000862"/>
+        <!-- <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/> -->
       </inertial>
       
+      <collision>
+	  	<origin xyz="0 0 0" rpy="0 0 0" />
+		<geometry>
+			<box size="0.28 0.125 0.06" />
+		</geometry>
+      </collision>	
+      
+
+<!--       <visual name="visual">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/FRAME_new.dae"/>
+
+        </geometry>
+      </visual>
+ -->
       <visual>
 	  	<origin xyz="0 0 0" rpy="0 0 0" />
 		<geometry>
-			<box size="0.25 0.15 0.05" />
+			<box size="0.28 0.125 0.06" />
 		</geometry>
-      </visual>	
+      </visual>
   		
   	</link>
     
   	
   	<gazebo reference="frame">
-		<mu1>0.2</mu1>
-		<mu2>0.2</mu2>
+		<!-- <mu1>0.2</mu1>
+		<mu2>0.2</mu2> -->
 		<material>Gazebo/Black</material>
 	</gazebo>
 
@@ -47,17 +66,20 @@
     </joint>
  
 	<leg flipped="1" parent="frame" suffix="1">
-		<origin rpy="0 0 3.14" xyz="0.125 0.075 0"/>
+		<origin rpy="0 0 3.14" xyz="0.14 0.0625 0"/>
 	</leg>
 	<leg flipped="0" parent="frame" suffix="2">
-		<origin rpy="0 0 3.14" xyz="0.125 -0.075 0"/>
+		<origin rpy="0 0 3.14" xyz="0.14 -0.0625 0"/>
 	</leg>
 	
 	<leg flipped="0" parent="frame" suffix="3">
-		<origin rpy="0 0 0" xyz="-0.125 0.075 0"/>
+		<origin rpy="0 0 0" xyz="-0.14 0.0625 0"/>
 	</leg>
 	
 	<leg flipped="1" parent="frame" suffix="4">
-		<origin rpy="0 0 0" xyz="-0.125 -0.075 0"/>
+		<origin rpy="0 0 0" xyz="-0.14 -0.0625 0"/>
 	</leg>
+
+	
+  
 </robot>

@@ -1,0 +1,21 @@
+<launch>
+    <!-- include the individual launch files-->
+
+    <!-- launch the camera -->
+    <include file="$(find camera)/launch/uvc_ps3eye.launch" />
+ 
+   <!-- launch the aprtil tag detector -->
+   <include file="$(find camera)/launch/april.launch" />    
+    
+  
+    <!-- Collect results -->
+
+    <!--node 
+   	  pkg="rosbag" 
+	  name="record" 
+	  type="record" 
+	  args="-O classData.bag /tag_detections /cmd_vel_mux/input/teleop /tag_detections_image/compressed /odom">   	     
+    </node-->
+
+
+</launch>

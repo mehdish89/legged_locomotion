@@ -1,0 +1,8 @@
+prefix=/home/meit/catkin_ws/install
+
+Name: daedalus_control
+Description: Description of daedalus_control
+Version: 0.0.0
+Cflags: -I/home/meit/catkin_ws/install/include
+Libs: -L/home/meit/catkin_ws/install/lib 
+Requires: message_runtime moveit_core moveit_ros_planning_interface interactive_markers

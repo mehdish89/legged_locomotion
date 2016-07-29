@@ -247,7 +247,7 @@ void timerCallback(const ros::TimerEvent&)
 	double var = ev2 - ev*ev;
 	//rel = edv/ev;//
 	rel = sqrt(var)/ev;
-	
+	/*
 	daedalus_control::Stats msg;
 	msg.effort = eff;
 	msg.velocity = v;
@@ -257,6 +257,7 @@ void timerCallback(const ros::TimerEvent&)
 	msg.leg_z = leg_z - gz ;
 	if(v>0.001)
 		stat_pub.publish(msg);
+		*/
 	//	cout << "Instant Velocity: " << v << "  MEAN: " << ev << "   VAR: " << sqrt(var) << " rel: " << rel << endl;
 		
 	v_count++;
@@ -390,7 +391,7 @@ Gait one_to_all(Gait poses)
 	
 	append(gait[0], poses[2], -1);
 	append(gait[0], poses[2], -1);
-	append(gait[0], poses[0])face;
+	append(gait[0], poses[0]);
 	
 	append(gait[1], poses[3], -1);
 	append(gait[1], poses[3], -1);

@@ -1,0 +1,531 @@
+<?xml version='1.0'?>
+<sdf version="1.4">
+  <model name="my_model">
+    
+    <static>false</static>
+    <link name="leg1link0">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -1.03151079 0 0 0 0</pose>
+    	<inertial>
+      	<pose>0.892683838 1.03151079 0.148531107 0 0 0</pose>
+        <mass>4.72639954</mass>
+      	<inertia> 
+          <ixx>3.76702192</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>5.02939053</iyy>
+          <iyz>0</iyz>
+          <izz>0.104767786</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link0.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+       <visual name="visual">
+          <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link0.dae</uri>
+          </mesh>
+          </geometry>
+       </visual>
+    </link>
+    <link name="leg1link1">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -1.03151079 0 0 0 0</pose>
+    	<inertial>
+      	<pose>0.837170246 1.0317214 0.161524277 0 0 0</pose>
+        <mass> 6.23121787</mass>
+      	<inertia> 
+          <ixx>4.36786663</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>6.63326988</iyy>
+          <iyz>0</iyz>
+          <izz>0.164683289</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link> 
+    <link name="leg1link2">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -1.03151079 0 0 0 0</pose>
+    	<inertial>
+      	<pose>0.832200686 1.07493617 0.207757883 0 0 0</pose>
+        <mass>7.32147232</mass>
+        <inertia> 
+          <ixx>5.071313</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>8.46231008</iyy>
+          <iyz>0</iyz>
+          <izz>0.316663829</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg1link3">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -1.03151079 0 0 0 0</pose>
+      <inertial>
+        <pose>0.832200686 1.08721722 0.149707719 0 0 0</pose>
+        <mass>4.31132052</mass>
+        <inertia> 
+          <ixx>2.98629222</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>5.09630234</iyy>
+          <iyz>0</iyz>
+          <izz>0.0982604921</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link3.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link3.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+   <link name="leg1link4">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -1.03151079 0 0 0 0</pose>
+    	<inertial>
+        <pose>0.83302605 1.05076371 0.100373531 0 0 0</pose>
+        <mass>7.90197358</mass>
+        <inertia> 
+          <ixx>5.48411837</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>8.72903423</iyy>
+          <iyz>0</iyz>
+          <izz>0.0812723132</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link4.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link4.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg1link5">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -1.03151079 0 0 0 0</pose>
+      <inertial>
+      	<pose>0.831916494 1.04042356 0.0403854853 0 0 0</pose>
+        <mass>6.55679875</mass>
+      	<inertia> 
+          <ixx>4.53905844</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>7.09980012</iyy>
+          <iyz>0</iyz>
+          <izz>0.012361989</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link5.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link5.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg2link0">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -0.83151079 0 0 0 0</pose>
+    	<inertial>
+        <pose>0.892683838 1.03151079 0.148531107 0 0 0</pose>
+        <mass>4.72639954</mass>
+        <inertia> 
+          <ixx>3.76702192</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>5.02939053</iyy>
+          <iyz>0</iyz>
+          <izz>0.104767786</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link0.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+           <mesh>
+              <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link0.dae</uri>
+           </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg2link1">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -0.83151079 0 0 0 0</pose>
+    	<inertial>
+        <pose>0.837170246 1.0317214 0.161524277 0 0 0</pose>
+        <mass> 6.23121787</mass>
+        <inertia> 
+          <ixx>4.36786663</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>6.63326988</iyy>
+          <iyz>0</iyz>
+          <izz>0.164683289</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+           <mesh>
+              <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link1.dae</uri>
+           </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link> 
+    <link name="leg2link2">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -0.83151079 0 0 0 0</pose>
+      <inertial>
+        <pose>0.832200686 1.07493617 0.207757883 0 0 0</pose>
+        <mass>7.32147232</mass>
+        <inertia> 
+          <ixx>5.071313</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>8.46231008</iyy>
+          <iyz>0</iyz>
+          <izz>0.316663829</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg2link3">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -0.83151079 0 0 0 0</pose>
+      <inertial>
+        <pose>0.832200686 1.08721722 0.149707719 0 0 0</pose>
+        <mass>4.31132052</mass>
+        <inertia> 
+          <ixx>2.98629222</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>5.09630234</iyy>
+          <iyz>0</iyz>
+          <izz>0.0982604921</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link3.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link3.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg2link4">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -0.83151079 0 0 0 0</pose>
+      <inertial>
+        <pose>0.83302605 1.05076371 0.100373531 0 0 0</pose>
+        <mass>7.90197358</mass>
+        <inertia> 
+          <ixx>5.48411837</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>8.72903423</iyy>
+          <iyz>0</iyz>
+          <izz>0.0812723132</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link4.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link4.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg2link5">
+      <self_collide>1</self_collide>
+      <pose>-0.892683838 -0.83151079 0 0 0 0</pose>
+      <inertial>
+        <pose>0.831916494 1.04042356 0.0403854853 0 0 0</pose>
+        <mass>6.55679875</mass>
+        <inertia> 
+          <ixx>4.53905844</ixx> 
+          <ixy>0</ixy> 
+          <ixz>0</ixz>
+          <iyy>7.09980012</iyy>
+          <iyz>0</iyz>
+          <izz>0.012361989</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link5.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:///home/kaus/catkin_ws/src/daedalus_description/meshes/link5.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="chasis">
+      <self_collide>1</self_collide>
+      <pose>0.145 0.1 0.1 0 0 0</pose>
+      <inertial>
+        <mass>100.0</mass>  
+        <pose> 0 0 0 0 0 0</pose>      
+        <inertia> 
+          <ixx>0.083</ixx>       
+          <ixy>0.083</ixy>       
+          <ixz>0.083</ixz>       
+          <iyy>0.083</iyy>       
+          <iyz>0.083</iyz>       
+          <izz>0.083</izz> 
+        </inertia> 
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.25 0.25 0.2</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.25 0.25 0.2</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint type="revolute" name="leg1joint0">
+      <pose>0 1.03151 0.148531 0 0 0</pose>
+      <child>leg1link0</child>
+      <parent>chasis</parent>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+      <xyz>1 0 0</xyz>
+      </axis>
+    </joint>
+    <joint type="revolute" name="leg1joint1">
+      <pose>0.86449 1.03151 0 0 0 0</pose>
+      <child>leg1link0</child>
+      <parent>leg1link1</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <dynamics>
+          <friction>5</friction>
+        </dynamics>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>160</effort>
+        </limit>
+      </axis>
+    </joint>
+    <joint type="revolute" name="leg1joint2">
+      <pose>0 1.03203 0.207131 0 0 0</pose>
+      <child>leg1link1</child>
+      <parent>leg1link2</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <damping>5</damping>
+          <friction>5</friction>
+        </dynamics>
+        <limit>
+          <lower>-3.72</lower>
+          <upper>0.58</upper>
+          <effort>10</effort>
+        </limit>        
+      </axis>
+    </joint>
+    <joint type="revolute" name="leg1joint3">
+      <pose>0 1.08843 0.186331 0 0 0</pose>
+      <child>leg1link2</child>
+      <parent>leg1link3</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <friction>5</friction>
+        </dynamics>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>160</effort>
+        </limit>                
+      </axis>
+    </joint>
+   <joint type="revolute" name="leg1joint4">
+      <pose>0 1.07122 0.111983 0 0 0</pose>
+      <child>leg1link3</child>
+      <parent>leg1link4</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+      </axis>
+    </joint>
+    <joint type="revolute" name="leg1joint5">
+      <pose>0.83 0 0.09 0 0 0</pose>
+      <child>leg1link4</child>
+      <parent>leg1link5</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+    <joint type="revolute" name="leg2joint0">
+      <pose>0 1.03151 0.148531 0 0 0</pose>
+      <child>leg2link0</child>
+      <parent>chasis</parent>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+        <xyz>1 0 0</xyz>
+      </axis>
+    </joint>
+    <joint type="revolute" name="leg2joint1">
+      <pose>0.86449 1.03151 0 0 0 0</pose>
+      <child>leg2link0</child>
+      <parent>leg2link1</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <joint type="revolute" name="leg2joint2">
+      <pose>0 1.03203 0.207131 0 0 0</pose>
+      <child>leg2link1</child>
+      <parent>leg2link2</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+      </axis>
+    </joint>
+    <joint type="revolute" name="leg2joint3">
+      <pose>0 1.08843 0.186331 0 0 0</pose>
+      <child>leg2link2</child>
+      <parent>leg2link3</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+      </axis>
+    </joint>
+    <joint type="revolute" name="leg2joint4">
+      <pose>0 1.07122 0.111983 0 0 0</pose>
+      <child>leg2link3</child>
+      <parent>leg2link4</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+      </axis>
+    </joint>
+    <joint type="revolute" name="leg2joint5">
+      <pose>0.83 0 0.09 0 0 0</pose>
+      <child>leg2link4</child>
+      <parent>leg2link5</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/rrbot</robotNamespace>
+      <!-- <robotParam>Daedalus</robotParm>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType> -->
+    </plugin>
+  </model>
+</sdf>

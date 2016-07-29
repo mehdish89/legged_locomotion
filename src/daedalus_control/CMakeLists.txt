@@ -1,6 +1,44 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(daedalus_control)
 
+
+FIND_PATH(GALIB_INCLUDE_DIR
+  NAMES
+  ga/ga.h
+  ga/garandom.h
+  ga/GASimpleGA.h
+  ga/GA1DArrayGenome.h
+  ga/std_stream.h
+  PATHS
+  /usr/include
+  /usr/local/include
+  DOC "Google PerfTools header location"
+)
+
+#
+# Find the library
+#
+FIND_LIBRARY(GALIB_LIBRARY
+  NAMES
+  ga
+  PATHS
+  /usr/lib
+  /usr/local/lib
+  DOC "Google PerfTools library location"
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(GALIB DEFAULT_MSG
+	GALIB_LIBRARY GALIB_INCLUDE_DIR)
+
+IF(GALIB_INCLUDE_DIR AND GALIB_LIBRARY)
+	SET(GALIB_INCLUDE_DIRS ${GALIB_INCLUDE_DIR})
+	SET(GALIB_LIBRARIES	  ${GALIB_LIBRARY})
+ENDIF(GALIB_INCLUDE_DIR AND GALIB_LIBRARY)
+
+MARK_AS_ADVANCED(GALIB_INCLUDE_DIR)
+MARK_AS_ADVANCED(GALIB_LIBRARY)
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -10,6 +48,8 @@ find_package(Eigen REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
+
+
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -79,7 +119,11 @@ find_package(Eigen REQUIRED)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
+
+   			
 #  LIBRARIES daedalus_control
+
+
 #  CATKIN_DEPENDS other_catkin_pkg
 CATKIN_DEPENDS 
 	message_runtime
@@ -99,10 +143,18 @@ CATKIN_DEPENDS
 
 include_directories(SYSTEM ${EIGEN_INCLUDE_DIRS})
 
+include_directories(${GALIB_INCLUDE_DIRS})
+
 ## Declare a cpp library
 # add_library(daedalus_control
 #   src/${PROJECT_NAME}/daedalus_control.cpp
 # )
+
+add_library(galib STATIC IMPORTED)
+   set_property(TARGET galib PROPERTY
+                IMPORTED_LOCATION /usr/local/lib/libga.a)
+
+
 
 ## Declare a cpp executable
 add_executable(daedalus_control_mapper src/daedalus_control_mapper.cpp)
@@ -111,20 +163,29 @@ add_dependencies(daedalus_control_mapper daedalus_control_mapper_generate_messag
 
 add_executable(gait_controller src/gait_controller.cpp)
 target_link_libraries(gait_controller ${catkin_LIBRARIES})
+target_link_libraries(gait_controller /usr/local/lib/libga.a)
 add_dependencies(gait_controller gait_controller_generate_messages_cpp)
 
 add_executable(gait_controller_robot src/gait_controller_robot.cpp)
 target_link_libraries(gait_controller_robot ${catkin_LIBRARIES})
 add_dependencies(gait_controller_robot gait_controller_robot_generate_messages_cpp)
 
-add_executable(gait_optimization src/gait_optimization.cpp)
-target_link_libraries(gait_optimization ${catkin_LIBRARIES})
-add_dependencies(gait_optimization gait_optimization_generate_messages_cpp)
+# add_executable(gait_optimization src/gait_optimization.cpp)
+# target_link_libraries(gait_optimization ${catkin_LIBRARIES})
+# add_dependencies(gait_optimization gait_optimization_generate_messages_cpp)
 
 
 add_executable(gait_controller_jspace src/gait_controller_jspace.cpp)
 target_link_libraries(gait_controller_jspace ${catkin_LIBRARIES})
 add_dependencies(gait_controller_jspace gait_controller_jspace_generate_messages_cpp)
+
+add_executable(gait_controller_jspace_old src/gait_controller_jspace_old.cpp)
+target_link_libraries(gait_controller_jspace_old ${catkin_LIBRARIES})
+add_dependencies(gait_controller_jspace_old gait_controller_jspace_old_generate_messages_cpp)
+
+add_executable(js_js_unlimited src/js_js_unlimited.cpp)
+target_link_libraries(js_js_unlimited ${catkin_LIBRARIES})
+add_dependencies(js_js_unlimited js_js_unlimited_generate_messages_cpp)
 
 
 
@@ -186,5 +247,5 @@ add_dependencies(gait_controller_jspace gait_controller_jspace_generate_messages
 # catkin_add_nosetests(test)
 
 ## Mine for adding c++11
-list( APPEND CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS} -g -ftest-coverage -fprofile-arcs")
+list( APPEND CMAKE_CXX_FLAGS "-I ${GALIB_INCLUDE_DIRS} -std=c++0x ${CMAKE_CXX_FLAGS}  -g -ftest-coverage -fprofile-arcs")
 

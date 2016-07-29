@@ -1,0 +1,33 @@
+<launch>
+    <!-- include the individual launch files-->
+
+    <!-- launch the camera -->
+    <include file="uvc_ps3eye.launch" />
+ 
+   <!-- launch the aprtil tag detector -->
+   <include file="april.launch" />    
+    
+    <!-- launch turtlebot -->
+    <include file="turtle_minimal.launch"/>
+    
+
+    <!-- turtlebot_teleop_key already has its own built in velocity smoother -->
+    <node pkg="turtlebot_teleop" type="turtlebot_teleop_key" name="turtlebot_teleop_keyboard"  output="screen" launch-prefix="xterm -e">
+    	  <param name="scale_linear" value="0.5" type="double"/>
+    	  <param name="scale_angular" value="1.5" type="double"/>
+    	  <remap from="turtlebot_teleop_keyboard/cmd_vel" to="cmd_vel_mux/input/teleop"/>
+    </node>
+
+    
+
+    <!-- Collect results -->
+
+    <node 
+    	  pkg="rosbag" 
+	  name="record" 
+	  type="record" 
+	  args="-O classData.bag /tag_detections /cmd_vel_mux/input/teleop /tag_detections_image/compressed /odom">   	     
+    </node>
+
+
+</launch>

@@ -18,26 +18,37 @@
     <arg name="load_robot_description" value="true"/>
   </include>
 
-	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"  output="screen" args=" -urdf -z 0.5 -model daedalus -param robot_description" />
+	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"  output="screen" args=" -urdf -z 0.0197 -model daedalus -param robot_description" />
 
     <include file="$(find daedalus_moveit)/launch/daedalus_moveit_trajectory_manager.launch"/>
     
     <include file="$(find daedalus_moveit)/launch/moveit_controller_manager.launch"/>
+    
+    <include file="$(find daedalus_moveit)/launch/joint_state_controller.launch"/>
 
   <!-- If needed, broadcast static tf for robot root -->
   
+  
 
   <!-- We do not have a robot connected, so publish fake joint states -->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+  <!--node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="/use_gui" value="false"/> 
-    <!--rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam-->
+    <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
     <rosparam param="/source_list">[/daedalus/joint_states]</rosparam>
-  </node>
+  </node-->
 
-    <remap from="/joint_states" to="/daedalus/joint_states" />
+
+	<!--rosparam file="$(find daedalus_gazebo)/controller/joint_state_controller.yaml" command="load"/>
+  <node name="joint_state_controller_spawner"  pkg="controller_manager" type="controller_manager" args="spawn joint_state_controller" respawn="false" output="screen"/-->
+
+	
+
+    <!--remap from="/joint_states" to="/daedalus/joint_states" /-->
+    
+    <!--remap from="/daedalus/controller_manager/load_controller" to="/controller_manager/load_controller" /-->
   
   <!-- Given the published joint states, publish tf for the robot links -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+  <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" /-->
 
   <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
   <include file="$(find daedalus_moveit)/launch/move_group.launch">
@@ -57,7 +68,6 @@
   </include>
 	
 
-  <!-- If database loading was enabled, start mongodb as well -->
-  <include file="$(find daedalus_moveit)/launch/default_warehouse_db.launch" if="$(arg db)"/>
+
 
 </launch>

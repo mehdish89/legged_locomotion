@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:include filename="$(find daedalus_description)/urdf/daedalus.gazebo" />
+	<xacro:include filename="$(find daedalus_description)/urdf/materials.xacro" />
+		
+	<xacro:property name="scale" value="0.01" />
+
+	<macro name="right_leg" params="suffix parent *origin">
+	
+	<leg_finish suffix="${suffix}"/>
+    
+    <link name="leg${suffix}link0">
+    	<self_collide>1</self_collide>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+          <mass value="${47.264202 * const}"/>
+        <inertia ixx="${92.924561*scale}" ixy="0" ixz="0" iyy="${112.408630*scale}" iyz="0" izz="${106.058662*scale}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link0.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link0.dae"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg${suffix}link1">
+    	<self_collide>1</self_collide>
+    	
+      <inertial>
+        <origin xyz="-0.0236 0 0" rpy="0 0 0"/>
+        <mass value="${62.343552 * const}"/>
+        <inertia ixx="${256.757294*scale}" ixy="${0.461719*scale}" ixz="${40.230606*scale}" iyy="${280.351624*scale}" iyz="${-1.692201*scale}" izz="${114.922241*scale}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="-0.0236 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link1.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="-0.0236 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link1.dae"/>
+        </geometry>
+      </visual>
+    </link> 
+    <link name="leg${suffix}link2">
+      <self_collide>1</self_collide>
+      <inertial>
+        <origin xyz="0 0.0371 -0.0015" rpy="0 0 0"/>
+        <mass value="${73.212067 * const}"/>
+        <inertia ixx="${308.272949*scale}" ixy="0" ixz="0" iyy="${141.348206*scale}" iyz="${-6.197227*scale}" izz="${320.700867*scale}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="0 0.0371 -0.0015" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link2.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="0 0.0371 -0.0015" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link2.dae"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg${suffix}link3">
+      <self_collide>1</self_collide>
+      <inertial>
+        <origin xyz=" -0.0177993  -0.0027828  -0.0402923" rpy="0 0 0"/>
+        <mass value="${43.109013  * const}"/>
+        <inertia ixx="${177.687561*scale}" ixy="0" ixz="0" iyy="${208.616043*scale}" iyz="${-14.718610*scale}" izz="${59.618698*scale}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="-0.85 -1.09 -0.19" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link3.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="-0.85 -1.09 -0.19" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link3.dae"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg${suffix}link4">
+      <self_collide>1</self_collide>
+      <inertial>
+        <origin xyz="0.0230260  -0.0192363  -0.0096265" rpy="0 0 0"/>
+        <mass value="${79.043472 * const}"/>
+        <inertia ixx="${609.197083*scale}" ixy="${13.511174*scale}" ixz="${-5.220560*scale}" iyy="${234.447556*scale}" iyz="${179.840118*scale}" izz="${511.354614*scale}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="-0.81 -1.07 -0.11" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link4.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="-0.81 -1.07 -0.11" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link4.dae"/>
+        </geometry>
+      </visual>
+    </link>
+    <link name="leg${suffix}link5">
+      <self_collide>1</self_collide>
+      <inertial>
+        <origin xyz="0.0019165   0.0104236  -0.0496145" rpy="0 0 0"/>
+        <mass value="${65.552696 * const}"/>
+        <inertia ixx="${385.638153*scale}" ixy="${-0.223889*scale}" ixz="${-13.452513*scale}" iyy="${286.320038*scale}" iyz="${-3.575976*scale}" izz="${338.489807*scale}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="-0.83 -1.03 -0.09" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link5.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="-0.83 -1.03 -0.09" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link5.dae"/>
+        </geometry>
+      </visual>
+    </link>
+    
+    
+    <joint type="fixed" name="leg${suffix}joint0">
+      
+      <child link="leg${suffix}link0"/>
+      <parent link="${parent}"/>
+      <insert_block name="origin" />
+      <axis xyz="1 0 0"/>
+    </joint>
+    <joint type="revolute" name="leg${suffix}joint1">
+      <origin xyz="-0.0249 0 0.0205" rpy="0 0 0"/>
+      <child link="leg${suffix}link1"/>
+      <parent link="leg${suffix}link0"/>"
+      <axis xyz="0 0 1"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="0.5"/>
+    </joint>
+    <joint type="revolute" name="leg${suffix}joint2">
+      <origin xyz="-0.0309 0.0002 0.0381" rpy="0 0 0"/>
+      <child link="leg${suffix}link2"/>
+      <parent link="leg${suffix}link1"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-0.45" upper="3.59" effort="100" velocity="0.5"/>
+    </joint>
+    <joint type="revolute" name="leg${suffix}joint3">
+      <origin xyz="0.0177 0.058 -0.018" rpy="0 0 0"/>
+      <child link="leg${suffix}link3"/>
+      <parent link="leg${suffix}link2"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="0.5"/>
+    </joint>
+    <joint type="revolute" name="leg${suffix}joint4">
+      <origin xyz="-0.04 -0.02 -0.08" rpy="0 0 0"/>
+      <child link="leg${suffix}link4"/>
+      <parent link="leg${suffix}link3"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="0.5"/>
+    </joint>
+    <joint type="revolute" name="leg${suffix}joint5">
+      <origin xyz="0.02 -0.04 -0.02" rpy="0 0 0"/>
+      <child link="leg${suffix}link5"/>
+      <parent link="leg${suffix}link4"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="0.5"/>
+    </joint>
+    
+<transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="leg${suffix}joint1">
+	      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="leg${suffix}joint2">
+	      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="leg${suffix}joint3">
+	      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="leg${suffix}joint4">
+	      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="leg${suffix}joint5">
+	      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+    		
+	</macro>
+</robot>
+

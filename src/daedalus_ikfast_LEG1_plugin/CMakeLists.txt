@@ -28,6 +28,10 @@ find_package(LAPACK REQUIRED)
 add_library(${IKFAST_LIBRARY_NAME} src/daedalus_LEG1_ikfast_moveit_plugin.cpp)
 target_link_libraries(${IKFAST_LIBRARY_NAME} ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${LAPACK_LIBRARIES})
 
+# add_executable(daedalus_LEG1_ikfast_moveit src/daedalus_LEG1_ikfast_moveit_plugin.cpp)
+# target_link_libraries(daedalus_LEG1_ikfast_moveit ${catkin_LIBRARIES})
+# add_dependencies(daedalus_LEG1_ikfast_moveit daedalus_LEG1_ikfast_moveit_generate_messages_cpp)
+
 install(TARGETS ${IKFAST_LIBRARY_NAME} LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
 
 install(

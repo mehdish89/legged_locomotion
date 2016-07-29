@@ -1,0 +1,20 @@
+image_width: 640
+image_height: 480
+camera_name: ps3eye
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [532.5, 0, 303.4, 0, 536.55, 247.21, 0, 0, 1]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.0891, 0.01755, 0.0047, 0.005859, 0]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1, 0, 0, 0, 1, 0, 0, 0, 1]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [515.41, 0, 305.72, 0, 0, 525.792, 248.48, 0, 0, 0, 1, 0]

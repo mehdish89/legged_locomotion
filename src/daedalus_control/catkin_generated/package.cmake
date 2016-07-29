@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "daedalus_control")
+set(daedalus_control_MAINTAINER "kaus <kaus@todo.todo>")
+set(daedalus_control_DEPRECATED "")
+set(daedalus_control_VERSION "0.0.0")
+set(daedalus_control_BUILD_DEPENDS "message_generation" "pluginlib" "moveit_core" "moveit_ros_planning_interface" "moveit_ros_perception" "interactive_markers" "cmake_modules")
+set(daedalus_control_RUN_DEPENDS "message_runtime" "pluginlib" "moveit_core" "moveit_fake_controller_manager" "moveit_ros_planning_interface" "moveit_ros_perception" "interactive_markers")
+set(daedalus_control_BUILDTOOL_DEPENDS "catkin")

@@ -1,0 +1,49 @@
+<launch>
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find daedalus_rough)/worlds/rough.world"/>
+    <!-- more default parameters can be changed here -->
+  </include>
+  <param name="robot_description"
+	 command="$(find xacro)/xacro.py '$(find daedalus_description)/urdf/daedalus.xacro'" />
+  <!-- Spawn a robot into Gazebo -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"  output="screen" args=" -urdf -z 0.5 -model daedalus -param robot_description" />
+  
+
+  	<include file="$(find daedalus_moveit)/launch/planning_context.launch">
+		<arg name="load_robot_description" value="true"/>
+	</include>
+  
+    <include file="$(find daedalus_moveit)/launch/daedalus_moveit_trajectory_manager.launch"/>
+    
+    <include file="$(find daedalus_moveit)/launch/moveit_controller_manager.launch"/>
+    
+    <include file="$(find daedalus_moveit)/launch/joint_state_controller.launch"/>
+  
+  <!-- ros_control rrbot launch file -->
+  <!--include file="$(find daedalus_control)/launch/daedalus_control_xacro.launch" /-->
+  
+  <!--node name="gui_publisher" pkg="rqt_publisher" type="rqt_publisher" respawn="false" output="screen" /-->
+  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  
+  <include file="$(find daedalus_moveit)/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true" />
+    <arg name="allow_trajectory_execution" value="true"/>  
+    <arg name="fake_execution" value="false"/>
+    <arg name="info" value="true"/>
+    <!--arg name="debug" value="$(arg debug)"/-->
+  </include>
+  
+  <param name="camera_description"
+	 command="$(find xacro)/xacro.py '$(find daedalus_rough)/urdf/camera.xacro'" />
+  
+  
+  <node name="spawn_urdf_camera" pkg="gazebo_ros" type="spawn_model"  output="screen"  args=" -urdf -z 2 -model camera_model -param camera_description" />
+  
+  <include file="$(find daedalus_moveit)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+    <arg name="debug" value="false"/>
+  </include>
+  
+</launch>
