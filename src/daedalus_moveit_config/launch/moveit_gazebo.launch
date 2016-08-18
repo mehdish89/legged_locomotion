@@ -14,17 +14,19 @@
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
 
 
-  <include file="$(find daedalus_moveit)/launch/planning_context.launch">
+  <include file="$(find daedalus_moveit_config)/launch/planning_context.launch">
     <arg name="load_robot_description" value="true"/>
   </include>
 
 	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"  output="screen" args=" -urdf -z 0.0197 -model daedalus -param robot_description" />
 
-    <include file="$(find daedalus_moveit)/launch/daedalus_moveit_trajectory_manager.launch"/>
+    <include file="$(find daedalus_moveit_config)/launch/moveit_controller_manager.launch"/>    
     
-    <include file="$(find daedalus_moveit)/launch/moveit_controller_manager.launch"/>
+    <include file="$(find daedalus_moveit_config)/launch/daedalus_moveit_trajectory_manager.launch"/>
     
-    <include file="$(find daedalus_moveit)/launch/joint_state_controller.launch"/>
+
+    
+    <include file="$(find daedalus_moveit_config)/launch/joint_state_controller.launch"/>
 
   <!-- If needed, broadcast static tf for robot root -->
   
@@ -51,7 +53,7 @@
   <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" /-->
 
   <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
-  <include file="$(find daedalus_moveit)/launch/move_group.launch">
+  <include file="$(find daedalus_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />
     <arg name="allow_trajectory_execution" value="true"/>  
     <arg name="fake_execution" value="false"/>
@@ -62,7 +64,7 @@
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
 
 
-  <include file="$(find daedalus_moveit)/launch/moveit_rviz.launch">
+  <include file="$(find daedalus_moveit_config)/launch/moveit_rviz.launch">
     <arg name="config" value="true"/>
     <arg name="debug" value="$(arg debug)"/>
   </include>

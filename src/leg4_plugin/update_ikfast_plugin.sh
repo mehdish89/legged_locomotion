@@ -1,0 +1,1 @@
+rosrun moveit_ikfast create_ikfast_moveit_plugin.py daedalus LEG4 leg4_plugin /home/meit/catkin_ws/src/daedalus/src/leg4_plugin/src/daedalus_LEG4_ikfast_solver.cpp

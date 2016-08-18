@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema" version="1.5.0">
 	<asset>
 		<contributor>
 			<authoring_tool>URDF Collada Writer</authoring_tool>
 		</contributor>
-		<created>2015-08-12T14:49:07.000000</created>
-		<modified>2015-08-12T14:49:07.000000</modified>
+		<created>2016-08-03T13:40:54.000000</created>
+		<modified>2016-08-03T13:40:54.000000</modified>
 		<unit/>
 		<up_axis>Z_UP</up_axis>
 	</asset>
@@ -12,16 +13,16 @@
 		<visual_scene id="vscene" name="URDF Visual Scene">
 			<node id="visual0" name="daedalus" sid="visual0">
 				<node id="vkmodel0_node25" name="root" sid="node25">
-					<translate>0.0 0.0 0.0</translate>
-					<rotate>1.0 0.0 0.0 0.0</rotate>
+					<translate>0 0 0</translate>
+					<rotate>1 0 0 0</rotate>
 					<node id="vkmodel0_node0" name="frame" sid="node0">
-						<translate>-0.0 -0.0 -0.0</translate>
-						<rotate>1.0 0.0 0.0 0.0</rotate>
-						<translate>0.0 0.0 0.0</translate>
-						<rotate>1.0 0.0 0.0 0.0</rotate>
-						<rotate sid="node_r_root_axis0">0.0 0.0 0.0 0.0</rotate>
-						<translate>0.0 0.0 0.0</translate>
-						<rotate>1.0 0.0 0.0 0.0</rotate>
+						<translate>-0 -0 -0</translate>
+						<rotate>1 0 0 0</rotate>
+						<translate>0 0 0</translate>
+						<rotate>1 0 0 0</rotate>
+						<rotate sid="node_r_root_axis0">0 0 0 0</rotate>
+						<translate>0 0 0</translate>
+						<rotate>1 0 0 0</rotate>
 						<instance_geometry url="#gkmodel0_frame_geom0">
 							<bind_material>
 								<technique_common>
@@ -30,13 +31,13 @@
 							</bind_material>
 						</instance_geometry>
 						<node id="vkmodel0_node1" name="leg1link0" sid="node1">
-							<translate>-0.0 -0.0 -0.0</translate>
-							<rotate>1.0 0.0 0.0 0.0</rotate>
-							<translate>0.125 0.075 0.0</translate>
-							<rotate>0.0 0.0 1.0 179.90875</rotate>
-							<rotate sid="node_leg1joint0_axis0">0.0 0.0 0.0 0.0</rotate>
-							<translate>0.0 0.0 0.0</translate>
-							<rotate>1.0 0.0 0.0 0.0</rotate>
+							<translate>-0 -0 -0</translate>
+							<rotate>1 0 0 0</rotate>
+							<translate>0.14 0.0625 0</translate>
+							<rotate>0 0 1 179.9087476710785</rotate>
+							<rotate sid="node_leg1joint0_axis0">0 0 0 0</rotate>
+							<translate>0 0 0</translate>
+							<rotate>1 0 0 0</rotate>
 							<instance_geometry url="#gkmodel0_leg1link0_geom0">
 								<bind_material>
 									<technique_common>
@@ -45,13 +46,13 @@
 								</bind_material>
 							</instance_geometry>
 							<node id="vkmodel0_node2" name="leg1link1" sid="node2">
-								<translate>-0.0 -0.0 -0.0</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
-								<translate>-0.0249 0.0 0.0205</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
-								<rotate sid="node_leg1joint1_axis0">0.0 0.0 -1.0 0.0</rotate>
-								<translate>-0.0236 0.0 0.0</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
+								<translate>-0 -0 -0</translate>
+								<rotate>1 0 0 0</rotate>
+								<translate>-0.0249 0 0.0205</translate>
+								<rotate>1 0 0 0</rotate>
+								<rotate sid="node_leg1joint1_axis0">0 0 -1 0</rotate>
+								<translate>-0.0236 0 0</translate>
+								<rotate>1 0 0 0</rotate>
 								<instance_geometry url="#gkmodel0_leg1link1_geom0">
 									<bind_material>
 										<technique_common>
@@ -60,13 +61,13 @@
 									</bind_material>
 								</instance_geometry>
 								<node id="vkmodel0_node3" name="leg1link2" sid="node3">
-									<translate>0.0236 -0.0 -0.0</translate>
-									<rotate>1.0 0.0 0.0 0.0</rotate>
+									<translate>0.0236 -0 -0</translate>
+									<rotate>1 0 0 0</rotate>
 									<translate>-0.0309 0.0002 0.0381</translate>
-									<rotate>0.0 0.70711 0.70711 179.99989</rotate>
-									<rotate sid="node_leg1joint2_axis0">-1.0 0.0 0.0 0.0</rotate>
-									<translate>0.0 0.0371 -0.0015</translate>
-									<rotate>1.0 0.0 0.0 0.0</rotate>
+									<rotate>9.381850462946159e-07 0.7071063120932464 0.7071072502789151 179.9998924917703</rotate>
+									<rotate sid="node_leg1joint2_axis0">-1 0 0 0</rotate>
+									<translate>0 0.0371 -0.0015</translate>
+									<rotate>1 0 0 0</rotate>
 									<instance_geometry url="#gkmodel0_leg1link2_geom0">
 										<bind_material>
 											<technique_common>
@@ -75,13 +76,13 @@
 										</bind_material>
 									</instance_geometry>
 									<node id="vkmodel0_node4" name="leg1link3" sid="node4">
-										<translate>-0.0 -0.0371 0.0015</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
-										<translate>0.0 0.0564 -0.0208</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
-										<rotate sid="node_leg1joint3_axis0">1.0 0.0 0.0 0.0</rotate>
-										<translate>0.0 -0.0041 -0.0371</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
+										<translate>-0 -0.0371 0.0015</translate>
+										<rotate>1 0 0 0</rotate>
+										<translate>0 0.0564 -0.0208</translate>
+										<rotate>1 0 0 0</rotate>
+										<rotate sid="node_leg1joint3_axis0">1 0 0 0</rotate>
+										<translate>0 -0.0041 -0.0371</translate>
+										<rotate>1 0 0 0</rotate>
 										<instance_geometry url="#gkmodel0_leg1link3_geom0">
 											<bind_material>
 												<technique_common>
@@ -90,13 +91,13 @@
 											</bind_material>
 										</instance_geometry>
 										<node id="vkmodel0_node5" name="leg1link4" sid="node5">
-											<translate>-0.0 0.0041 0.0371</translate>
-											<rotate>1.0 0.0 0.0 0.0</rotate>
-											<translate>0.0 -0.0171 -0.0742</translate>
-											<rotate>-1.0 0.0 0.0 44.99996</rotate>
-											<rotate sid="node_leg1joint4_axis0">1.0 0.0 0.0 0.0</rotate>
+											<translate>-0 0.0041 0.0371</translate>
+											<rotate>1 0 0 0</rotate>
+											<translate>0 -0.0171 -0.0742</translate>
+											<rotate>-1 0 0 44.99996199012607</rotate>
+											<rotate sid="node_leg1joint4_axis0">1 0 0 0</rotate>
 											<translate>0.0002 -0.0233 -0.0124</translate>
-											<rotate>1.0 0.0 0.0 0.0</rotate>
+											<rotate>1 0 0 0</rotate>
 											<instance_geometry url="#gkmodel0_leg1link4_geom0">
 												<bind_material>
 													<technique_common>
@@ -106,12 +107,12 @@
 											</instance_geometry>
 											<node id="vkmodel0_node6" name="leg1link5" sid="node6">
 												<translate>-0.0002 0.0233 0.0124</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
+												<rotate>1 0 0 0</rotate>
 												<translate>-0.0004 -0.0411 -0.0248</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
-												<rotate sid="node_leg1joint5_axis0">0.0 1.0 0.0 0.0</rotate>
-												<translate>-0.0006 -0.0009 -0.0311</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
+												<rotate>1 0 0 0</rotate>
+												<rotate sid="node_leg1joint5_axis0">0 1 0 0</rotate>
+												<translate>-0.0005999999999999999 -0.0009 -0.0311</translate>
+												<rotate>1 0 0 0</rotate>
 												<instance_geometry url="#gkmodel0_leg1link5_geom0">
 													<bind_material>
 														<technique_common>
@@ -126,13 +127,13 @@
 							</node>
 						</node>
 						<node id="vkmodel0_node7" name="leg2link0" sid="node7">
-							<translate>-0.0 -0.0 -0.0</translate>
-							<rotate>1.0 0.0 0.0 0.0</rotate>
-							<translate>0.125 -0.075 0.0</translate>
-							<rotate>0.0 0.0 1.0 179.90875</rotate>
-							<rotate sid="node_leg2joint0_axis0">0.0 0.0 0.0 0.0</rotate>
-							<translate>0.0 0.0 0.0</translate>
-							<rotate>1.0 0.0 0.0 0.0</rotate>
+							<translate>-0 -0 -0</translate>
+							<rotate>1 0 0 0</rotate>
+							<translate>0.14 -0.0625 0</translate>
+							<rotate>0 0 1 179.9087476710785</rotate>
+							<rotate sid="node_leg2joint0_axis0">0 0 0 0</rotate>
+							<translate>0 0 0</translate>
+							<rotate>1 0 0 0</rotate>
 							<instance_geometry url="#gkmodel0_leg2link0_geom0">
 								<bind_material>
 									<technique_common>
@@ -141,13 +142,13 @@
 								</bind_material>
 							</instance_geometry>
 							<node id="vkmodel0_node8" name="leg2link1" sid="node8">
-								<translate>-0.0 -0.0 -0.0</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
-								<translate>-0.0249 0.0 0.0205</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
-								<rotate sid="node_leg2joint1_axis0">0.0 0.0 -1.0 0.0</rotate>
-								<translate>-0.0236 0.0 0.0</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
+								<translate>-0 -0 -0</translate>
+								<rotate>1 0 0 0</rotate>
+								<translate>-0.0249 0 0.0205</translate>
+								<rotate>1 0 0 0</rotate>
+								<rotate sid="node_leg2joint1_axis0">0 0 -1 0</rotate>
+								<translate>-0.0236 0 0</translate>
+								<rotate>1 0 0 0</rotate>
 								<instance_geometry url="#gkmodel0_leg2link1_geom0">
 									<bind_material>
 										<technique_common>
@@ -156,13 +157,13 @@
 									</bind_material>
 								</instance_geometry>
 								<node id="vkmodel0_node9" name="leg2link2" sid="node9">
-									<translate>0.0236 -0.0 -0.0</translate>
-									<rotate>1.0 0.0 0.0 0.0</rotate>
+									<translate>0.0236 -0 -0</translate>
+									<rotate>1 0 0 0</rotate>
 									<translate>-0.0309 0.0002 0.0381</translate>
-									<rotate>1.0 0.0 0.0 89.99992</rotate>
-									<rotate sid="node_leg2joint2_axis0">1.0 0.0 0.0 0.0</rotate>
-									<translate>0.0 0.0371 -0.0015</translate>
-									<rotate>1.0 0.0 0.0 0.0</rotate>
+									<rotate>1 0 0 89.99992398025213</rotate>
+									<rotate sid="node_leg2joint2_axis0">1 0 0 0</rotate>
+									<translate>0 0.0371 -0.0015</translate>
+									<rotate>1 0 0 0</rotate>
 									<instance_geometry url="#gkmodel0_leg2link2_geom0">
 										<bind_material>
 											<technique_common>
@@ -171,13 +172,13 @@
 										</bind_material>
 									</instance_geometry>
 									<node id="vkmodel0_node10" name="leg2link3" sid="node10">
-										<translate>-0.0 -0.0371 0.0015</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
-										<translate>0.0 0.0564 -0.0208</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
-										<rotate sid="node_leg2joint3_axis0">-1.0 0.0 0.0 0.0</rotate>
-										<translate>0.0 -0.0041 -0.0371</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
+										<translate>-0 -0.0371 0.0015</translate>
+										<rotate>1 0 0 0</rotate>
+										<translate>0 0.0564 -0.0208</translate>
+										<rotate>1 0 0 0</rotate>
+										<rotate sid="node_leg2joint3_axis0">-1 0 0 0</rotate>
+										<translate>0 -0.0041 -0.0371</translate>
+										<rotate>1 0 0 0</rotate>
 										<instance_geometry url="#gkmodel0_leg2link3_geom0">
 											<bind_material>
 												<technique_common>
@@ -186,13 +187,13 @@
 											</bind_material>
 										</instance_geometry>
 										<node id="vkmodel0_node11" name="leg2link4" sid="node11">
-											<translate>-0.0 0.0041 0.0371</translate>
-											<rotate>1.0 0.0 0.0 0.0</rotate>
-											<translate>0.0 -0.0171 -0.0742</translate>
-											<rotate>-1.0 0.0 0.0 44.99996</rotate>
-											<rotate sid="node_leg2joint4_axis0">-1.0 0.0 0.0 0.0</rotate>
+											<translate>-0 0.0041 0.0371</translate>
+											<rotate>1 0 0 0</rotate>
+											<translate>0 -0.0171 -0.0742</translate>
+											<rotate>-1 0 0 44.99996199012607</rotate>
+											<rotate sid="node_leg2joint4_axis0">-1 0 0 0</rotate>
 											<translate>0.0002 -0.0233 -0.0124</translate>
-											<rotate>1.0 0.0 0.0 0.0</rotate>
+											<rotate>1 0 0 0</rotate>
 											<instance_geometry url="#gkmodel0_leg2link4_geom0">
 												<bind_material>
 													<technique_common>
@@ -202,12 +203,12 @@
 											</instance_geometry>
 											<node id="vkmodel0_node12" name="leg2link5" sid="node12">
 												<translate>-0.0002 0.0233 0.0124</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
+												<rotate>1 0 0 0</rotate>
 												<translate>-0.0004 -0.0411 -0.0248</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
-												<rotate sid="node_leg2joint5_axis0">0.0 1.0 0.0 0.0</rotate>
-												<translate>-0.0006 -0.0009 -0.0311</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
+												<rotate>1 0 0 0</rotate>
+												<rotate sid="node_leg2joint5_axis0">0 1 0 0</rotate>
+												<translate>-0.0005999999999999999 -0.0009 -0.0311</translate>
+												<rotate>1 0 0 0</rotate>
 												<instance_geometry url="#gkmodel0_leg2link5_geom0">
 													<bind_material>
 														<technique_common>
@@ -222,13 +223,13 @@
 							</node>
 						</node>
 						<node id="vkmodel0_node13" name="leg3link0" sid="node13">
-							<translate>-0.0 -0.0 -0.0</translate>
-							<rotate>1.0 0.0 0.0 0.0</rotate>
-							<translate>-0.125 0.075 0.0</translate>
-							<rotate>1.0 0.0 0.0 0.0</rotate>
-							<rotate sid="node_leg3joint0_axis0">0.0 0.0 0.0 0.0</rotate>
-							<translate>0.0 0.0 0.0</translate>
-							<rotate>1.0 0.0 0.0 0.0</rotate>
+							<translate>-0 -0 -0</translate>
+							<rotate>1 0 0 0</rotate>
+							<translate>-0.14 0.0625 0</translate>
+							<rotate>1 0 0 0</rotate>
+							<rotate sid="node_leg3joint0_axis0">0 0 0 0</rotate>
+							<translate>0 0 0</translate>
+							<rotate>1 0 0 0</rotate>
 							<instance_geometry url="#gkmodel0_leg3link0_geom0">
 								<bind_material>
 									<technique_common>
@@ -237,13 +238,13 @@
 								</bind_material>
 							</instance_geometry>
 							<node id="vkmodel0_node14" name="leg3link1" sid="node14">
-								<translate>-0.0 -0.0 -0.0</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
-								<translate>-0.0249 0.0 0.0205</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
-								<rotate sid="node_leg3joint1_axis0">0.0 0.0 -1.0 0.0</rotate>
-								<translate>-0.0236 0.0 0.0</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
+								<translate>-0 -0 -0</translate>
+								<rotate>1 0 0 0</rotate>
+								<translate>-0.0249 0 0.0205</translate>
+								<rotate>1 0 0 0</rotate>
+								<rotate sid="node_leg3joint1_axis0">0 0 -1 0</rotate>
+								<translate>-0.0236 0 0</translate>
+								<rotate>1 0 0 0</rotate>
 								<instance_geometry url="#gkmodel0_leg3link1_geom0">
 									<bind_material>
 										<technique_common>
@@ -252,13 +253,13 @@
 									</bind_material>
 								</instance_geometry>
 								<node id="vkmodel0_node15" name="leg3link2" sid="node15">
-									<translate>0.0236 -0.0 -0.0</translate>
-									<rotate>1.0 0.0 0.0 0.0</rotate>
+									<translate>0.0236 -0 -0</translate>
+									<rotate>1 0 0 0</rotate>
 									<translate>-0.0309 0.0002 0.0381</translate>
-									<rotate>1.0 0.0 0.0 89.99992</rotate>
-									<rotate sid="node_leg3joint2_axis0">1.0 0.0 0.0 0.0</rotate>
-									<translate>0.0 0.0371 -0.0015</translate>
-									<rotate>1.0 0.0 0.0 0.0</rotate>
+									<rotate>1 0 0 89.99992398025213</rotate>
+									<rotate sid="node_leg3joint2_axis0">1 0 0 0</rotate>
+									<translate>0 0.0371 -0.0015</translate>
+									<rotate>1 0 0 0</rotate>
 									<instance_geometry url="#gkmodel0_leg3link2_geom0">
 										<bind_material>
 											<technique_common>
@@ -267,13 +268,13 @@
 										</bind_material>
 									</instance_geometry>
 									<node id="vkmodel0_node16" name="leg3link3" sid="node16">
-										<translate>-0.0 -0.0371 0.0015</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
-										<translate>0.0 0.0564 -0.0208</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
-										<rotate sid="node_leg3joint3_axis0">-1.0 0.0 0.0 0.0</rotate>
-										<translate>0.0 -0.0041 -0.0371</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
+										<translate>-0 -0.0371 0.0015</translate>
+										<rotate>1 0 0 0</rotate>
+										<translate>0 0.0564 -0.0208</translate>
+										<rotate>1 0 0 0</rotate>
+										<rotate sid="node_leg3joint3_axis0">-1 0 0 0</rotate>
+										<translate>0 -0.0041 -0.0371</translate>
+										<rotate>1 0 0 0</rotate>
 										<instance_geometry url="#gkmodel0_leg3link3_geom0">
 											<bind_material>
 												<technique_common>
@@ -282,13 +283,13 @@
 											</bind_material>
 										</instance_geometry>
 										<node id="vkmodel0_node17" name="leg3link4" sid="node17">
-											<translate>-0.0 0.0041 0.0371</translate>
-											<rotate>1.0 0.0 0.0 0.0</rotate>
-											<translate>0.0 -0.0171 -0.0742</translate>
-											<rotate>-1.0 0.0 0.0 44.99996</rotate>
-											<rotate sid="node_leg3joint4_axis0">-1.0 0.0 0.0 0.0</rotate>
+											<translate>-0 0.0041 0.0371</translate>
+											<rotate>1 0 0 0</rotate>
+											<translate>0 -0.0171 -0.0742</translate>
+											<rotate>-1 0 0 44.99996199012607</rotate>
+											<rotate sid="node_leg3joint4_axis0">-1 0 0 0</rotate>
 											<translate>0.0002 -0.0233 -0.0124</translate>
-											<rotate>1.0 0.0 0.0 0.0</rotate>
+											<rotate>1 0 0 0</rotate>
 											<instance_geometry url="#gkmodel0_leg3link4_geom0">
 												<bind_material>
 													<technique_common>
@@ -298,12 +299,12 @@
 											</instance_geometry>
 											<node id="vkmodel0_node18" name="leg3link5" sid="node18">
 												<translate>-0.0002 0.0233 0.0124</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
+												<rotate>1 0 0 0</rotate>
 												<translate>-0.0004 -0.0411 -0.0248</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
-												<rotate sid="node_leg3joint5_axis0">0.0 1.0 0.0 0.0</rotate>
-												<translate>-0.0006 -0.0009 -0.0311</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
+												<rotate>1 0 0 0</rotate>
+												<rotate sid="node_leg3joint5_axis0">0 1 0 0</rotate>
+												<translate>-0.0005999999999999999 -0.0009 -0.0311</translate>
+												<rotate>1 0 0 0</rotate>
 												<instance_geometry url="#gkmodel0_leg3link5_geom0">
 													<bind_material>
 														<technique_common>
@@ -318,13 +319,13 @@
 							</node>
 						</node>
 						<node id="vkmodel0_node19" name="leg4link0" sid="node19">
-							<translate>-0.0 -0.0 -0.0</translate>
-							<rotate>1.0 0.0 0.0 0.0</rotate>
-							<translate>-0.125 -0.075 0.0</translate>
-							<rotate>1.0 0.0 0.0 0.0</rotate>
-							<rotate sid="node_leg4joint0_axis0">0.0 0.0 0.0 0.0</rotate>
-							<translate>0.0 0.0 0.0</translate>
-							<rotate>1.0 0.0 0.0 0.0</rotate>
+							<translate>-0 -0 -0</translate>
+							<rotate>1 0 0 0</rotate>
+							<translate>-0.14 -0.0625 0</translate>
+							<rotate>1 0 0 0</rotate>
+							<rotate sid="node_leg4joint0_axis0">0 0 0 0</rotate>
+							<translate>0 0 0</translate>
+							<rotate>1 0 0 0</rotate>
 							<instance_geometry url="#gkmodel0_leg4link0_geom0">
 								<bind_material>
 									<technique_common>
@@ -333,13 +334,13 @@
 								</bind_material>
 							</instance_geometry>
 							<node id="vkmodel0_node20" name="leg4link1" sid="node20">
-								<translate>-0.0 -0.0 -0.0</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
-								<translate>-0.0249 0.0 0.0205</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
-								<rotate sid="node_leg4joint1_axis0">0.0 0.0 -1.0 0.0</rotate>
-								<translate>-0.0236 0.0 0.0</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
+								<translate>-0 -0 -0</translate>
+								<rotate>1 0 0 0</rotate>
+								<translate>-0.0249 0 0.0205</translate>
+								<rotate>1 0 0 0</rotate>
+								<rotate sid="node_leg4joint1_axis0">0 0 -1 0</rotate>
+								<translate>-0.0236 0 0</translate>
+								<rotate>1 0 0 0</rotate>
 								<instance_geometry url="#gkmodel0_leg4link1_geom0">
 									<bind_material>
 										<technique_common>
@@ -348,13 +349,13 @@
 									</bind_material>
 								</instance_geometry>
 								<node id="vkmodel0_node21" name="leg4link2" sid="node21">
-									<translate>0.0236 -0.0 -0.0</translate>
-									<rotate>1.0 0.0 0.0 0.0</rotate>
+									<translate>0.0236 -0 -0</translate>
+									<rotate>1 0 0 0</rotate>
 									<translate>-0.0309 0.0002 0.0381</translate>
-									<rotate>0.0 0.70711 0.70711 179.99989</rotate>
-									<rotate sid="node_leg4joint2_axis0">-1.0 0.0 0.0 0.0</rotate>
-									<translate>0.0 0.0371 -0.0015</translate>
-									<rotate>1.0 0.0 0.0 0.0</rotate>
+									<rotate>9.381850462946159e-07 0.7071063120932464 0.7071072502789151 179.9998924917703</rotate>
+									<rotate sid="node_leg4joint2_axis0">-1 0 0 0</rotate>
+									<translate>0 0.0371 -0.0015</translate>
+									<rotate>1 0 0 0</rotate>
 									<instance_geometry url="#gkmodel0_leg4link2_geom0">
 										<bind_material>
 											<technique_common>
@@ -363,13 +364,13 @@
 										</bind_material>
 									</instance_geometry>
 									<node id="vkmodel0_node22" name="leg4link3" sid="node22">
-										<translate>-0.0 -0.0371 0.0015</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
-										<translate>0.0 0.0564 -0.0208</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
-										<rotate sid="node_leg4joint3_axis0">1.0 0.0 0.0 0.0</rotate>
-										<translate>0.0 -0.0041 -0.0371</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
+										<translate>-0 -0.0371 0.0015</translate>
+										<rotate>1 0 0 0</rotate>
+										<translate>0 0.0564 -0.0208</translate>
+										<rotate>1 0 0 0</rotate>
+										<rotate sid="node_leg4joint3_axis0">1 0 0 0</rotate>
+										<translate>0 -0.0041 -0.0371</translate>
+										<rotate>1 0 0 0</rotate>
 										<instance_geometry url="#gkmodel0_leg4link3_geom0">
 											<bind_material>
 												<technique_common>
@@ -378,13 +379,13 @@
 											</bind_material>
 										</instance_geometry>
 										<node id="vkmodel0_node23" name="leg4link4" sid="node23">
-											<translate>-0.0 0.0041 0.0371</translate>
-											<rotate>1.0 0.0 0.0 0.0</rotate>
-											<translate>0.0 -0.0171 -0.0742</translate>
-											<rotate>-1.0 0.0 0.0 44.99996</rotate>
-											<rotate sid="node_leg4joint4_axis0">1.0 0.0 0.0 0.0</rotate>
+											<translate>-0 0.0041 0.0371</translate>
+											<rotate>1 0 0 0</rotate>
+											<translate>0 -0.0171 -0.0742</translate>
+											<rotate>-1 0 0 44.99996199012607</rotate>
+											<rotate sid="node_leg4joint4_axis0">1 0 0 0</rotate>
 											<translate>0.0002 -0.0233 -0.0124</translate>
-											<rotate>1.0 0.0 0.0 0.0</rotate>
+											<rotate>1 0 0 0</rotate>
 											<instance_geometry url="#gkmodel0_leg4link4_geom0">
 												<bind_material>
 													<technique_common>
@@ -394,12 +395,12 @@
 											</instance_geometry>
 											<node id="vkmodel0_node24" name="leg4link5" sid="node24">
 												<translate>-0.0002 0.0233 0.0124</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
+												<rotate>1 0 0 0</rotate>
 												<translate>-0.0004 -0.0411 -0.0248</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
-												<rotate sid="node_leg4joint5_axis0">0.0 1.0 0.0 0.0</rotate>
-												<translate>-0.0006 -0.0009 -0.0311</translate>
-												<rotate>1.0 0.0 0.0 0.0</rotate>
+												<rotate>1 0 0 0</rotate>
+												<rotate sid="node_leg4joint5_axis0">0 1 0 0</rotate>
+												<translate>-0.0005999999999999999 -0.0009 -0.0311</translate>
+												<rotate>1 0 0 0</rotate>
 												<instance_geometry url="#gkmodel0_leg4link5_geom0">
 													<bind_material>
 														<technique_common>
@@ -422,7 +423,7 @@
 		<geometry id="gkmodel0_frame_geom0">
 			<mesh>
 				<source id="gkmodel0_frame_geom0_positions">
-					<float_array id="gkmodel0_frame_geom0_positions-array" count="24" digits="2490374">-0.0625 -0.03750000149011612 -0.01250000018626451 0.0625 -0.03750000149011612 -0.01250000018626451 0.0625 -0.03750000149011612 0.01250000018626451 -0.0625 -0.03750000149011612 0.01250000018626451 -0.0625 0.03750000149011612 0.01250000018626451 -0.0625 -0.03750000149011612 0.01250000018626451 0.0625 -0.03750000149011612 0.01250000018626451 0.0625 0.03750000149011612 0.01250000018626451 0.0625 0.03750000149011612 -0.01250000018626451 0.0625 0.03750000149011612 0.01250000018626451 0.0625 -0.03750000149011612 0.01250000018626451 0.0625 -0.03750000149011612 -0.01250000018626451 -0.0625 -0.03750000149011612 0.01250000018626451 -0.0625 0.03750000149011612 0.01250000018626451 -0.0625 0.03750000149011612 -0.01250000018626451 -0.0625 -0.03750000149011612 -0.01250000018626451 -0.0625 -0.03750000149011612 -0.01250000018626451 -0.0625 0.03750000149011612 -0.01250000018626451 0.0625 0.03750000149011612 -0.01250000018626451 0.0625 -0.03750000149011612 -0.01250000018626451 0.0625 0.03750000149011612 -0.01250000018626451 -0.0625 0.03750000149011612 -0.01250000018626451 -0.0625 0.03750000149011612 0.01250000018626451 0.0625 0.03750000149011612 0.01250000018626451</float_array>
+					<float_array id="gkmodel0_frame_geom0_positions-array" count="24" digits="2490374">-0.07000000029802322 -0.03125 -0.01499999966472387 0.07000000029802322 -0.03125 -0.01499999966472387 0.07000000029802322 -0.03125 0.01499999966472387 -0.07000000029802322 -0.03125 0.01499999966472387 -0.07000000029802322 0.03125 0.01499999966472387 -0.07000000029802322 -0.03125 0.01499999966472387 0.07000000029802322 -0.03125 0.01499999966472387 0.07000000029802322 0.03125 0.01499999966472387 0.07000000029802322 0.03125 -0.01499999966472387 0.07000000029802322 0.03125 0.01499999966472387 0.07000000029802322 -0.03125 0.01499999966472387 0.07000000029802322 -0.03125 -0.01499999966472387 -0.07000000029802322 -0.03125 0.01499999966472387 -0.07000000029802322 0.03125 0.01499999966472387 -0.07000000029802322 0.03125 -0.01499999966472387 -0.07000000029802322 -0.03125 -0.01499999966472387 -0.07000000029802322 -0.03125 -0.01499999966472387 -0.07000000029802322 0.03125 -0.01499999966472387 0.07000000029802322 0.03125 -0.01499999966472387 0.07000000029802322 -0.03125 -0.01499999966472387 0.07000000029802322 0.03125 -0.01499999966472387 -0.07000000029802322 0.03125 -0.01499999966472387 -0.07000000029802322 0.03125 0.01499999966472387 0.07000000029802322 0.03125 0.01499999966472387</float_array>
 					<technique_common>
 						<accessor count="24" source="#gkmodel0_frame_geom0_positions-array" stride="3">
 							<param name="X" type="float"/>
@@ -1806,8 +1807,8 @@
 					<revolute sid="axis0">
 						<axis>0 0 0</axis>
 						<limits>
-							<min>0.0</min>
-							<max>0.0</max>
+							<min>0</min>
+							<max>0</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1815,8 +1816,8 @@
 					<revolute sid="axis0">
 						<axis>0 0 -1</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1824,8 +1825,8 @@
 					<revolute sid="axis0">
 						<axis>-1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1833,8 +1834,8 @@
 					<revolute sid="axis0">
 						<axis>1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1842,8 +1843,8 @@
 					<revolute sid="axis0">
 						<axis>1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1851,8 +1852,8 @@
 					<revolute sid="axis0">
 						<axis>0 1 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1860,8 +1861,8 @@
 					<revolute sid="axis0">
 						<axis>0 0 0</axis>
 						<limits>
-							<min>0.0</min>
-							<max>0.0</max>
+							<min>0</min>
+							<max>0</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1869,8 +1870,8 @@
 					<revolute sid="axis0">
 						<axis>0 0 -1</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1878,8 +1879,8 @@
 					<revolute sid="axis0">
 						<axis>1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1887,8 +1888,8 @@
 					<revolute sid="axis0">
 						<axis>-1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1896,8 +1897,8 @@
 					<revolute sid="axis0">
 						<axis>-1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1905,8 +1906,8 @@
 					<revolute sid="axis0">
 						<axis>0 1 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1914,8 +1915,8 @@
 					<revolute sid="axis0">
 						<axis>0 0 0</axis>
 						<limits>
-							<min>0.0</min>
-							<max>0.0</max>
+							<min>0</min>
+							<max>0</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1923,8 +1924,8 @@
 					<revolute sid="axis0">
 						<axis>0 0 -1</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1932,8 +1933,8 @@
 					<revolute sid="axis0">
 						<axis>1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1941,8 +1942,8 @@
 					<revolute sid="axis0">
 						<axis>-1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1950,8 +1951,8 @@
 					<revolute sid="axis0">
 						<axis>-1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1959,8 +1960,8 @@
 					<revolute sid="axis0">
 						<axis>0 1 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1968,8 +1969,8 @@
 					<revolute sid="axis0">
 						<axis>0 0 0</axis>
 						<limits>
-							<min>0.0</min>
-							<max>0.0</max>
+							<min>0</min>
+							<max>0</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1977,8 +1978,8 @@
 					<revolute sid="axis0">
 						<axis>0 0 -1</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1986,8 +1987,8 @@
 					<revolute sid="axis0">
 						<axis>-1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -1995,8 +1996,8 @@
 					<revolute sid="axis0">
 						<axis>1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -2004,8 +2005,8 @@
 					<revolute sid="axis0">
 						<axis>1 0 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -2013,8 +2014,8 @@
 					<revolute sid="axis0">
 						<axis>0 1 0</axis>
 						<limits>
-							<min>-89.95437</min>
-							<max>89.95437</max>
+							<min>-89.95437383553924</min>
+							<max>89.95437383553924</max>
 						</limits>
 					</revolute>
 				</joint>
@@ -2022,39 +2023,39 @@
 					<revolute sid="axis0">
 						<axis>0 0 0</axis>
 						<limits>
-							<min>0.0</min>
-							<max>0.0</max>
+							<min>0</min>
+							<max>0</max>
 						</limits>
 					</revolute>
 				</joint>
 				<link sid="root" name="root">
 					<attachment_full joint="kmodel0/r_root">
-						<translate>0.0 0.0 0.0</translate>
-						<rotate>1.0 0.0 0.0 0.0</rotate>
+						<translate>0 0 0</translate>
+						<rotate>1 0 0 0</rotate>
 						<link sid="frame" name="frame">
 							<attachment_full joint="kmodel0/leg1joint0">
-								<translate>0.125 0.075 0.0</translate>
-								<rotate>0.0 0.0 1.0 179.90875</rotate>
+								<translate>0.14 0.0625 0</translate>
+								<rotate>0 0 1 179.9087476710785</rotate>
 								<link sid="leg1link0" name="leg1link0">
 									<attachment_full joint="kmodel0/leg1joint1">
-										<translate>-0.0249 0.0 0.0205</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
+										<translate>-0.0249 0 0.0205</translate>
+										<rotate>1 0 0 0</rotate>
 										<link sid="leg1link1" name="leg1link1">
 											<attachment_full joint="kmodel0/leg1joint2">
 												<translate>-0.0309 0.0002 0.0381</translate>
-												<rotate>0.0 0.70711 0.70711 179.99989</rotate>
+												<rotate>9.381850462946159e-07 0.7071063120932464 0.7071072502789151 179.9998924917703</rotate>
 												<link sid="leg1link2" name="leg1link2">
 													<attachment_full joint="kmodel0/leg1joint3">
-														<translate>0.0 0.0564 -0.0208</translate>
-														<rotate>1.0 0.0 0.0 0.0</rotate>
+														<translate>0 0.0564 -0.0208</translate>
+														<rotate>1 0 0 0</rotate>
 														<link sid="leg1link3" name="leg1link3">
 															<attachment_full joint="kmodel0/leg1joint4">
-																<translate>0.0 -0.0171 -0.0742</translate>
-																<rotate>-1.0 0.0 0.0 44.99996</rotate>
+																<translate>0 -0.0171 -0.0742</translate>
+																<rotate>-1 0 0 44.99996199012607</rotate>
 																<link sid="leg1link4" name="leg1link4">
 																	<attachment_full joint="kmodel0/leg1joint5">
 																		<translate>-0.0004 -0.0411 -0.0248</translate>
-																		<rotate>1.0 0.0 0.0 0.0</rotate>
+																		<rotate>1 0 0 0</rotate>
 																		<link sid="leg1link5" name="leg1link5"/>
 																	</attachment_full>
 																</link>
@@ -2068,28 +2069,28 @@
 								</link>
 							</attachment_full>
 							<attachment_full joint="kmodel0/leg2joint0">
-								<translate>0.125 -0.075 0.0</translate>
-								<rotate>0.0 0.0 1.0 179.90875</rotate>
+								<translate>0.14 -0.0625 0</translate>
+								<rotate>0 0 1 179.9087476710785</rotate>
 								<link sid="leg2link0" name="leg2link0">
 									<attachment_full joint="kmodel0/leg2joint1">
-										<translate>-0.0249 0.0 0.0205</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
+										<translate>-0.0249 0 0.0205</translate>
+										<rotate>1 0 0 0</rotate>
 										<link sid="leg2link1" name="leg2link1">
 											<attachment_full joint="kmodel0/leg2joint2">
 												<translate>-0.0309 0.0002 0.0381</translate>
-												<rotate>1.0 0.0 0.0 89.99992</rotate>
+												<rotate>1 0 0 89.99992398025213</rotate>
 												<link sid="leg2link2" name="leg2link2">
 													<attachment_full joint="kmodel0/leg2joint3">
-														<translate>0.0 0.0564 -0.0208</translate>
-														<rotate>1.0 0.0 0.0 0.0</rotate>
+														<translate>0 0.0564 -0.0208</translate>
+														<rotate>1 0 0 0</rotate>
 														<link sid="leg2link3" name="leg2link3">
 															<attachment_full joint="kmodel0/leg2joint4">
-																<translate>0.0 -0.0171 -0.0742</translate>
-																<rotate>-1.0 0.0 0.0 44.99996</rotate>
+																<translate>0 -0.0171 -0.0742</translate>
+																<rotate>-1 0 0 44.99996199012607</rotate>
 																<link sid="leg2link4" name="leg2link4">
 																	<attachment_full joint="kmodel0/leg2joint5">
 																		<translate>-0.0004 -0.0411 -0.0248</translate>
-																		<rotate>1.0 0.0 0.0 0.0</rotate>
+																		<rotate>1 0 0 0</rotate>
 																		<link sid="leg2link5" name="leg2link5"/>
 																	</attachment_full>
 																</link>
@@ -2103,28 +2104,28 @@
 								</link>
 							</attachment_full>
 							<attachment_full joint="kmodel0/leg3joint0">
-								<translate>-0.125 0.075 0.0</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
+								<translate>-0.14 0.0625 0</translate>
+								<rotate>1 0 0 0</rotate>
 								<link sid="leg3link0" name="leg3link0">
 									<attachment_full joint="kmodel0/leg3joint1">
-										<translate>-0.0249 0.0 0.0205</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
+										<translate>-0.0249 0 0.0205</translate>
+										<rotate>1 0 0 0</rotate>
 										<link sid="leg3link1" name="leg3link1">
 											<attachment_full joint="kmodel0/leg3joint2">
 												<translate>-0.0309 0.0002 0.0381</translate>
-												<rotate>1.0 0.0 0.0 89.99992</rotate>
+												<rotate>1 0 0 89.99992398025213</rotate>
 												<link sid="leg3link2" name="leg3link2">
 													<attachment_full joint="kmodel0/leg3joint3">
-														<translate>0.0 0.0564 -0.0208</translate>
-														<rotate>1.0 0.0 0.0 0.0</rotate>
+														<translate>0 0.0564 -0.0208</translate>
+														<rotate>1 0 0 0</rotate>
 														<link sid="leg3link3" name="leg3link3">
 															<attachment_full joint="kmodel0/leg3joint4">
-																<translate>0.0 -0.0171 -0.0742</translate>
-																<rotate>-1.0 0.0 0.0 44.99996</rotate>
+																<translate>0 -0.0171 -0.0742</translate>
+																<rotate>-1 0 0 44.99996199012607</rotate>
 																<link sid="leg3link4" name="leg3link4">
 																	<attachment_full joint="kmodel0/leg3joint5">
 																		<translate>-0.0004 -0.0411 -0.0248</translate>
-																		<rotate>1.0 0.0 0.0 0.0</rotate>
+																		<rotate>1 0 0 0</rotate>
 																		<link sid="leg3link5" name="leg3link5"/>
 																	</attachment_full>
 																</link>
@@ -2138,28 +2139,28 @@
 								</link>
 							</attachment_full>
 							<attachment_full joint="kmodel0/leg4joint0">
-								<translate>-0.125 -0.075 0.0</translate>
-								<rotate>1.0 0.0 0.0 0.0</rotate>
+								<translate>-0.14 -0.0625 0</translate>
+								<rotate>1 0 0 0</rotate>
 								<link sid="leg4link0" name="leg4link0">
 									<attachment_full joint="kmodel0/leg4joint1">
-										<translate>-0.0249 0.0 0.0205</translate>
-										<rotate>1.0 0.0 0.0 0.0</rotate>
+										<translate>-0.0249 0 0.0205</translate>
+										<rotate>1 0 0 0</rotate>
 										<link sid="leg4link1" name="leg4link1">
 											<attachment_full joint="kmodel0/leg4joint2">
 												<translate>-0.0309 0.0002 0.0381</translate>
-												<rotate>0.0 0.70711 0.70711 179.99989</rotate>
+												<rotate>9.381850462946159e-07 0.7071063120932464 0.7071072502789151 179.9998924917703</rotate>
 												<link sid="leg4link2" name="leg4link2">
 													<attachment_full joint="kmodel0/leg4joint3">
-														<translate>0.0 0.0564 -0.0208</translate>
-														<rotate>1.0 0.0 0.0 0.0</rotate>
+														<translate>0 0.0564 -0.0208</translate>
+														<rotate>1 0 0 0</rotate>
 														<link sid="leg4link3" name="leg4link3">
 															<attachment_full joint="kmodel0/leg4joint4">
-																<translate>0.0 -0.0171 -0.0742</translate>
-																<rotate>-1.0 0.0 0.0 44.99996</rotate>
+																<translate>0 -0.0171 -0.0742</translate>
+																<rotate>-1 0 0 44.99996199012607</rotate>
 																<link sid="leg4link4" name="leg4link4">
 																	<attachment_full joint="kmodel0/leg4joint5">
 																		<translate>-0.0004 -0.0411 -0.0248</translate>
-																		<rotate>1.0 0.0 0.0 0.0</rotate>
+																		<rotate>1 0 0 0</rotate>
 																		<link sid="leg4link5" name="leg4link5"/>
 																	</attachment_full>
 																</link>
@@ -2340,165 +2341,165 @@
 					<axis_info axis="robot0_kinematics/axis_info_inst0"/>
 					<axis_info axis="robot0_kinematics/axis_info_inst1">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst2">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst3">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst4">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst5">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst6"/>
 					<axis_info axis="robot0_kinematics/axis_info_inst7">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst8">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst9">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst10">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst11">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst12"/>
 					<axis_info axis="robot0_kinematics/axis_info_inst13">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst14">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst15">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst16">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst17">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst18"/>
 					<axis_info axis="robot0_kinematics/axis_info_inst19">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst20">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst21">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst22">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst23">
 						<speed>
-							<float>10.0</float>
+							<float>10</float>
 						</speed>
 						<acceleration>
-							<float>100.0</float>
+							<float>100</float>
 						</acceleration>
 					</axis_info>
 					<axis_info axis="robot0_kinematics/axis_info_inst24"/>
@@ -2515,151 +2516,151 @@
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg1joint0/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint0_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint1_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg1joint1/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint1_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint2_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg1joint2/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint2_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint3_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg1joint3/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint3_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint4_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg1joint4/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint4_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint5_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg1joint5/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg1joint5_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint0_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg2joint0/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint0_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint1_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg2joint1/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint1_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint2_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg2joint2/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint2_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint3_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg2joint3/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint3_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint4_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg2joint4/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint4_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint5_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg2joint5/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg2joint5_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint0_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg3joint0/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint0_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint1_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg3joint1/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint1_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint2_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg3joint2/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint2_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint3_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg3joint3/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint3_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint4_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg3joint4/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint4_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint5_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg3joint5/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg3joint5_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint0_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg4joint0/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint0_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint1_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg4joint1/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint1_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint2_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg4joint2/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint2_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint3_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg4joint3/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint3_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint4_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg4joint4/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint4_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint5_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/leg4joint5/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_leg4joint5_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_r_root_axis0">
 						<SIDREF>robot0_kinematics/kmodel0_inst/r_root/axis0</SIDREF>
 					</newparam>
 					<newparam sid="robot0_kinematics_kmodel0_inst_r_root_axis0_value">
-						<float>0.0</float>
+						<float>0</float>
 					</newparam>
 				</instance_kinematics_model>
 				<technique_common>
@@ -2671,9 +2672,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>0.0</float>
+							<min>
+								<float>0</float>
 							</min>
-							<max><float>0.0</float>
+							<max>
+								<float>0</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2685,9 +2688,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2699,9 +2704,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2713,9 +2720,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2727,9 +2736,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2741,9 +2752,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2755,9 +2768,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>0.0</float>
+							<min>
+								<float>0</float>
 							</min>
-							<max><float>0.0</float>
+							<max>
+								<float>0</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2769,9 +2784,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2783,9 +2800,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2797,9 +2816,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2811,9 +2832,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2825,9 +2848,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2839,9 +2864,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>0.0</float>
+							<min>
+								<float>0</float>
 							</min>
-							<max><float>0.0</float>
+							<max>
+								<float>0</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2853,9 +2880,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2867,9 +2896,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2881,9 +2912,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2895,9 +2928,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2909,9 +2944,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2923,9 +2960,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>0.0</float>
+							<min>
+								<float>0</float>
 							</min>
-							<max><float>0.0</float>
+							<max>
+								<float>0</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2937,9 +2976,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2951,9 +2992,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2965,9 +3008,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2979,9 +3024,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -2993,9 +3040,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>-89.95437</float>
+							<min>
+								<float>-89.95437383553924</float>
 							</min>
-							<max><float>89.95437</float>
+							<max>
+								<float>89.95437383553924</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -3007,9 +3056,11 @@
 							<bool>false</bool>
 						</locked>
 						<limits>
-							<min><float>0.0</float>
+							<min>
+								<float>0</float>
 							</min>
-							<max><float>0.0</float>
+							<max>
+								<float>0</float>
 							</max>
 						</limits>
 					</axis_info>
@@ -3216,276 +3267,276 @@
 			<rigid_body sid="rigid0" name="frame">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>24.0264202</mass>
+					<mass>2.40264202</mass>
 					<mass_frame>
-						<translate>0.0 0.0 0.0</translate>
-						<rotate>1.0 0.0 0.0 0.0</rotate>
+						<translate>0 0 0</translate>
+						<rotate>1 0 0 0</rotate>
 					</mass_frame>
-					<inertia>0.01 0.01 0.01</inertia>
+					<inertia>0.000367 0.00063 0.000862</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid1" name="leg1link0">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>4.7264202</mass>
+					<mass>0.47264202</mass>
 					<mass_frame>
-						<translate>0.125 0.075 0.0</translate>
-						<rotate>0.0 0.0 1.0 179.90875</rotate>
+						<translate>0.14 0.0625 0</translate>
+						<rotate>0 0 1 179.9087476710785</rotate>
 					</mass_frame>
-					<inertia>0.9292456100000001 1.1240863 1.06058662</inertia>
+					<inertia>4.39200522187e-05 5.31290419486e-05 5.01277802462e-05</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid2" name="leg1link1">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>6.2343552</mass>
+					<mass>0.62343552</mass>
 					<mass_frame>
-						<translate>0.1735 0.07492 0.0205</translate>
-						<rotate>-0.09275 -0.70059 0.70751 169.59444</rotate>
+						<translate>0.1884999384887857 0.06242275633355038 0.0205</translate>
+						<rotate>-0.09275479648476234 -0.7005935261229101 0.7075063666736418 169.5944408640051</rotate>
 					</mass_frame>
-					<inertia>2.673737759097123 1.042882686516687 2.803691144386189</inertia>
+					<inertia>0.0001666903090189191 6.50170109967855e-05 0.0001747920646516955</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid3" name="leg1link2">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>7.3212067</mass>
+					<mass>0.73212067</mass>
 					<mass_frame>
-						<translate>0.1808 0.07621 0.0957</translate>
-						<rotate>1.0 -0.0008 -0.00083 88.02335</rotate>
+						<translate>0.1958020037380953 0.06371117753618789 0.09569999800977499</translate>
+						<rotate>0.9999993410189156 -0.0007976532333239035 -0.000825657952149667 88.02334582606802</rotate>
 					</mass_frame>
-					<inertia>3.08272949 1.411343263854677 3.209147466145323</inertia>
+					<inertia>0.000225692997965 0.0001033273575933099 0.0002349483193046901</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid4" name="leg1link3">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>4.3109013</mass>
+					<mass>0.43109013</mass>
 					<mass_frame>
-						<translate>0.18089 0.13261 0.1109</translate>
-						<rotate>1.0 -0.0008 -0.00072 95.58792</rotate>
+						<translate>0.1958919790570323 0.1201111259342693 0.1108999231785295</translate>
+						<rotate>0.9999994202051168 -0.0007976532964870745 -0.0007234214876950051 95.58792089272072</rotate>
 					</mass_frame>
-					<inertia>1.77687561 2.10056093722045 0.5817864727795501</inertia>
+					<inertia>7.65993537709e-05 9.055310874997316e-05 2.508024061832685e-05</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid5" name="leg1link4">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>7.9043472</mass>
+					<mass>0.79043472</mass>
 					<mass_frame>
-						<translate>0.18114 0.162 0.07266</translate>
-						<rotate>-0.92657 0.24384 -0.28637 20.38051</rotate>
+						<translate>0.196138868852253 0.1495032715610322 0.07265616697920793</translate>
+						<rotate>-0.9265712327233659 0.2438438614718821 -0.286366761185693 20.38050859270023</rotate>
 					</mass_frame>
-					<inertia>6.098110804921744 5.996982163561777 1.454899561516479</inertia>
+					<inertia>0.0004820158506618169 0.0004740222917301624 0.0001150003127540206</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid6" name="leg1link5">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>6.5552696</mass>
+					<mass>0.65552696</mass>
 					<mass_frame>
-						<translate>0.17997 0.17954 0.02867</translate>
-						<rotate>0.98975 -0.05649 -0.13119 131.28892</rotate>
+						<translate>0.1949668460234561 0.1670413826098061 0.02867411355591206</translate>
+						<rotate>0.989746382844985 -0.05648678154326398 -0.1311920011134531 131.2889179453372</rotate>
 					</mass_frame>
-					<inertia>3.892111927811905 3.351742334890623 2.860625717297473</inertia>
+					<inertia>0.0002551384300017495 0.0002197157463496887 0.0001875217280155618</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid7" name="leg2link0">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>4.7264202</mass>
+					<mass>0.47264202</mass>
 					<mass_frame>
-						<translate>0.125 -0.075 0.0</translate>
-						<rotate>0.0 0.0 1.0 179.90875</rotate>
+						<translate>0.14 -0.0625 0</translate>
+						<rotate>0 0 1 179.9087476710785</rotate>
 					</mass_frame>
-					<inertia>0.9292456100000001 1.1240863 1.06058662</inertia>
+					<inertia>4.39200522187e-05 5.31290419486e-05 5.01277802462e-05</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid8" name="leg2link1">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>6.2343552</mass>
+					<mass>0.62343552</mass>
 					<mass_frame>
-						<translate>0.1735 -0.07508 0.0205</translate>
-						<rotate>-0.09275 -0.70059 0.70751 169.59444</rotate>
+						<translate>0.1884999384887857 -0.06257724366644961 0.0205</translate>
+						<rotate>-0.09275479648476234 -0.7005935261229101 0.7075063666736418 169.5944408640051</rotate>
 					</mass_frame>
-					<inertia>2.673737759097123 1.042882686516687 2.803691144386189</inertia>
+					<inertia>0.0001666903090189191 6.50170109967855e-05 0.0001747920646516955</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid9" name="leg2link2">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>7.3212067</mass>
+					<mass>0.73212067</mass>
 					<mass_frame>
-						<translate>0.1808 -0.07679 0.0957</translate>
-						<rotate>0.00055 0.6948 0.7192 179.93437</rotate>
+						<translate>0.1957972216420418 -0.0642889171007037 0.09569999800977499</translate>
+						<rotate>0.0005532916088906865 0.6948045645110364 0.719198380840102 179.9343714660948</rotate>
 					</mass_frame>
-					<inertia>3.08272949 1.411343263854677 3.209147466145323</inertia>
+					<inertia>0.000225692997965 0.0001033273575933099 0.0002349483193046901</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid10" name="leg2link3">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>4.3109013</mass>
+					<mass>0.43109013</mass>
 					<mass_frame>
-						<translate>0.18071 -0.13319 0.1109</translate>
-						<rotate>0.00059 0.74073 0.6718 179.9387</rotate>
+						<translate>0.1957073959854325 -0.1206888657373441 0.1108999231785295</translate>
+						<rotate>0.0005898660294238795 0.7407334633457002 0.6717987707178031 179.9386967904954</rotate>
 					</mass_frame>
-					<inertia>1.77687561 2.10056093722045 0.5817864727795501</inertia>
+					<inertia>7.65993537709e-05 9.055310874997316e-05 2.508024061832685e-05</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid11" name="leg2link4">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>7.9043472</mass>
+					<mass>0.79043472</mass>
 					<mass_frame>
-						<translate>0.18046 -0.16258 0.07266</translate>
-						<rotate>-0.0432 -0.16414 0.98549 174.19208</rotate>
+						<translate>0.1954605841849104 -0.1500810120191478 0.07265616697920793</translate>
+						<rotate>-0.04319545678261575 -0.1641373424703357 0.9854912913466648 174.1920833460335</rotate>
 					</mass_frame>
-					<inertia>6.098110804921744 5.996982163561777 1.454899561516479</inertia>
+					<inertia>0.0004820158506618169 0.0004740222917301624 0.0001150003127540206</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid12" name="leg2link5">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>6.5552696</mass>
+					<mass>0.65552696</mass>
 					<mass_frame>
-						<translate>0.18163 -0.18012 0.02867</translate>
-						<rotate>0.05183 0.90817 0.41538 166.27167</rotate>
+						<translate>0.1966326535526556 -0.1676191199577921 0.02867411355591205</translate>
+						<rotate>0.05182998643623987 0.9081724375945053 0.4153751028885502 166.2716727812666</rotate>
 					</mass_frame>
-					<inertia>3.892111927811905 3.351742334890623 2.860625717297473</inertia>
+					<inertia>0.0002551384300017495 0.0002197157463496887 0.0001875217280155618</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid13" name="leg3link0">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>4.7264202</mass>
+					<mass>0.47264202</mass>
 					<mass_frame>
-						<translate>-0.125 0.075 0.0</translate>
-						<rotate>1.0 0.0 0.0 0.0</rotate>
+						<translate>-0.14 0.0625 0</translate>
+						<rotate>1 0 0 0</rotate>
 					</mass_frame>
-					<inertia>0.9292456100000001 1.1240863 1.06058662</inertia>
+					<inertia>4.39200522187e-05 5.31290419486e-05 5.01277802462e-05</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid14" name="leg3link1">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>6.2343552</mass>
+					<mass>0.62343552</mass>
 					<mass_frame>
-						<translate>-0.1735 0.075 0.0205</translate>
-						<rotate>-0.98342 0.1294 -0.12701 90.39528</rotate>
+						<translate>-0.1885 0.0625 0.0205</translate>
+						<rotate>-0.9834240886052541 0.1294032643683407 -0.1270112480126962 90.39528118309381</rotate>
 					</mass_frame>
-					<inertia>2.673737759097123 1.042882686516687 2.803691144386189</inertia>
+					<inertia>0.0001666903090189191 6.50170109967855e-05 0.0001747920646516955</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid15" name="leg3link2">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>7.3212067</mass>
+					<mass>0.73212067</mass>
 					<mass_frame>
-						<translate>-0.1808 0.0767 0.0957</translate>
-						<rotate>1.0 0.0 0.0 88.02331</rotate>
+						<translate>-0.1958 0.06420004922408935 0.09569999800977499</translate>
+						<rotate>1 0 0 88.02330809168775</rotate>
 					</mass_frame>
-					<inertia>3.08272949 1.411343263854677 3.209147466145323</inertia>
+					<inertia>0.000225692997965 0.0001033273575933099 0.0002349483193046901</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid16" name="leg3link3">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>4.3109013</mass>
+					<mass>0.43109013</mass>
 					<mass_frame>
-						<translate>-0.1808 0.1331 0.1109</translate>
-						<rotate>1.0 0.0 0.0 95.58789</rotate>
+						<translate>-0.1958 0.1206000693913221 0.1108999231785295</translate>
+						<rotate>1 0 0 95.58788783077253</rotate>
 					</mass_frame>
-					<inertia>1.77687561 2.10056093722045 0.5817864727795501</inertia>
+					<inertia>7.65993537709e-05 9.055310874997316e-05 2.508024061832685e-05</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid17" name="leg3link4">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>7.9043472</mass>
+					<mass>0.79043472</mass>
 					<mass_frame>
-						<translate>-0.1806 0.16249 0.07266</translate>
-						<rotate>-0.92794 0.24341 -0.28229 20.35452</rotate>
+						<translate>-0.1956 0.14999257148141 0.07265616697920793</translate>
+						<rotate>-0.9279362450820113 0.2434118208982539 -0.2822853352728296 20.35451983082122</rotate>
 					</mass_frame>
-					<inertia>6.098110804921744 5.996982163561777 1.454899561516479</inertia>
+					<inertia>0.0004820158506618169 0.0004740222917301624 0.0001150003127540206</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid18" name="leg3link5">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>6.5552696</mass>
+					<mass>0.65552696</mass>
 					<mass_frame>
-						<translate>-0.1818 0.18003 0.02867</translate>
-						<rotate>0.98984 -0.0557 -0.13084 131.27694</rotate>
+						<translate>-0.1968 0.1675287904772582 0.02867411355591206</translate>
+						<rotate>0.9898379569997434 -0.05569992422873493 -0.1308370640280776 131.2769426437263</rotate>
 					</mass_frame>
-					<inertia>3.892111927811905 3.351742334890623 2.860625717297473</inertia>
+					<inertia>0.0002551384300017495 0.0002197157463496887 0.0001875217280155618</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid19" name="leg4link0">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>4.7264202</mass>
+					<mass>0.47264202</mass>
 					<mass_frame>
-						<translate>-0.125 -0.075 0.0</translate>
-						<rotate>1.0 0.0 0.0 0.0</rotate>
+						<translate>-0.14 -0.0625 0</translate>
+						<rotate>1 0 0 0</rotate>
 					</mass_frame>
-					<inertia>0.9292456100000001 1.1240863 1.06058662</inertia>
+					<inertia>4.39200522187e-05 5.31290419486e-05 5.01277802462e-05</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid20" name="leg4link1">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>6.2343552</mass>
+					<mass>0.62343552</mass>
 					<mass_frame>
-						<translate>-0.1735 -0.075 0.0205</translate>
-						<rotate>-0.98342 0.1294 -0.12701 90.39528</rotate>
+						<translate>-0.1885 -0.0625 0.0205</translate>
+						<rotate>-0.9834240886052541 0.1294032643683407 -0.1270112480126962 90.39528118309381</rotate>
 					</mass_frame>
-					<inertia>2.673737759097123 1.042882686516687 2.803691144386189</inertia>
+					<inertia>0.0001666903090189191 6.50170109967855e-05 0.0001747920646516955</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid21" name="leg4link2">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>7.3212067</mass>
+					<mass>0.73212067</mass>
 					<mass_frame>
-						<translate>-0.1808 -0.0763 0.0957</translate>
-						<rotate>0.0 0.6948 0.7192 179.99989</rotate>
+						<translate>-0.1958000039805153 -0.06380004922408407 0.09569999800977499</translate>
+						<rotate>9.218632914876734e-07 0.6948046708615837 0.7191984909244989 179.9998906534241</rotate>
 					</mass_frame>
-					<inertia>3.08272949 1.411343263854677 3.209147466145323</inertia>
+					<inertia>0.000225692997965 0.0001033273575933099 0.0002349483193046901</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid22" name="leg4link3">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>4.3109013</mass>
+					<mass>0.43109013</mass>
 					<mass_frame>
-						<translate>-0.1808 -0.1327 0.1109</translate>
-						<rotate>0.0 0.74073 0.6718 179.9999</rotate>
+						<translate>-0.1958001536430332 -0.1202000693911183 0.1108999231785295</translate>
+						<rotate>9.828015499446901e-07 0.7407335922114925 0.6717988875909906 179.9998978600359</rotate>
 					</mass_frame>
-					<inertia>1.77687561 2.10056093722045 0.5817864727795501</inertia>
+					<inertia>7.65993537709e-05 9.055310874997316e-05 2.508024061832685e-05</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid23" name="leg4link4">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>7.9043472</mass>
+					<mass>0.79043472</mass>
 					<mass_frame>
-						<translate>-0.181 -0.16209 0.07266</translate>
-						<rotate>-0.04306 -0.16417 0.98549 174.28186</rotate>
+						<translate>-0.196000231638676 -0.1495925709503847 0.07265616697920793</translate>
+						<rotate>-0.04306325571498541 -0.1641651569634935 0.9854924440331226 174.281861940544</rotate>
 					</mass_frame>
-					<inertia>6.098110804921744 5.996982163561777 1.454899561516479</inertia>
+					<inertia>0.0004820158506618169 0.0004740222917301624 0.0001150003127540206</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid24" name="leg4link5">
 				<technique_common>
 					<dynamic>true</dynamic>
-					<mass>6.5552696</mass>
+					<mass>0.65552696</mass>
 					<mass_frame>
-						<translate>-0.1798 -0.17963 0.02867</translate>
-						<rotate>0.05111 0.90818 0.41545 166.30952</rotate>
+						<translate>-0.194800278172612 -0.1671287931304789 0.02867411355591206</translate>
+						<rotate>0.05110594408336085 0.9081772997990815 0.4154541787116814 166.309517176996</rotate>
 					</mass_frame>
-					<inertia>3.892111927811905 3.351742334890623 2.860625717297473</inertia>
+					<inertia>0.0002551384300017495 0.0002197157463496887 0.0001875217280155618</inertia>
 				</technique_common>
 			</rigid_body>
 			<rigid_body sid="rigid25" name="root">

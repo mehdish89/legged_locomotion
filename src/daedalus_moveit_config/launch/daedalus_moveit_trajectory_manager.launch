@@ -1,13 +1,13 @@
 <launch>
 
   <!-- Load joint controller configurations from YAML file to parameter server -->
-  <rosparam file="$(find daedalus_moveit)/config/trajectory_controllers.yaml" command="load"/>
+  <rosparam file="$(find daedalus_moveit_config)/config/trajectory_controllers.yaml" command="load"/>
   
   <!-- load the controllers -->
   <node name="controller_manager" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" ns="/daedalus" 
     args="   LEG1_controller
-    	       LEG2_controller
+    	     LEG2_controller
              LEG3_controller
              LEG4_controller
     	  "/>

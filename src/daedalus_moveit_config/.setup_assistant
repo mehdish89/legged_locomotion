@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: daedalus_description
+    relative_path: urdf/daedalus.xacro
+  SRDF:
+    relative_path: config/daedalus.srdf
+  CONFIG:
+    generated_timestamp: 1470705325

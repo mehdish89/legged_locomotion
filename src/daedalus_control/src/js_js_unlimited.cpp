@@ -32,11 +32,259 @@
 #include <fcntl.h>
 #include <dirent.h>
 
+#define IKFAST_HAS_LIBRARY
+
+
+#include "ikfast.h"
+
 
 using namespace std;
 
+using namespace ikfast;
 
 
+
+#ifdef IKFAST_NAMESPACE
+using namespace IKFAST_NAMESPACE;
+#endif
+
+
+geometry_msgs::Pose normalize(geometry_msgs::Pose pose)
+{
+	double val = sqrt(pose.orientation.x * pose.orientation.x +
+						pose.orientation.y * pose.orientation.y +
+					 	pose.orientation.z * pose.orientation.z +
+					 	pose.orientation.w * pose.orientation.w);
+		
+	pose.orientation.x /= val;
+	pose.orientation.y /= val;
+	pose.orientation.z /= val;
+	pose.orientation.w /= val;
+
+	return pose;
+}
+
+
+vector<double> inverseK(geometry_msgs::Pose pose, vector<IkReal> last = vector<IkReal>())
+{
+	pose = normalize(pose);
+	Eigen::Affine3d p;
+	tf::poseMsgToEigen(pose, p);
+	Eigen::Matrix<double,4,4> m = p.matrix();
+
+	IkReal *trans = new IkReal[4];
+    IkReal *rot= new IkReal[9];
+
+    for(int i=0;i<3;i++)
+    	trans[i] = m(i,3);
+    	
+    for(int i=0;i<9;i++)
+    	rot[i] = m(i/3, i%3);
+
+	IkSolutionList<IkReal> solutions;
+
+    ComputeIk(trans, rot, NULL, solutions);
+
+    double lse = 1000000;
+    vector<double> vals;
+
+    // printf("Found %d ik solutions:\n", (int)solutions.GetNumSolutions());
+
+	if((int)solutions.GetNumSolutions()==0)
+		return vals;    
+
+    std::vector<IkReal> solvalues(GetNumJoints());
+    for(std::size_t i = 0; i < solutions.GetNumSolutions(); ++i) {
+        const IkSolutionBase<IkReal>& sol = solutions.GetSolution(i);
+        // printf("sol%d (free=%d): ", (int)i, (int)sol.GetFree().size());
+        std::vector<IkReal> vsolfree(sol.GetFree().size());
+        sol.GetSolution(&solvalues[0],vsolfree.size()>0?&vsolfree[0]:NULL);
+        
+        // for( std::size_t j = 0; j < solvalues.size(); ++j)
+        //     printf("%.15f, ", solvalues[j]);
+        // printf("\n");
+
+
+        if(last.size() == 0)
+        	return solvalues;
+
+        double sum = 0;
+
+        for(int k = 0;k<solvalues.size();k++)
+        {
+        	double pi = 3.14157;
+        	double ej = abs(solvalues[k]-last[k]);
+        	if(ej>=pi)
+        		ej = 2*pi - ej;
+        	sum+= ej*ej;
+        }
+        sum = sqrt(sum);
+
+        if(sum<lse)
+        {
+        	lse = sum;
+        	vals = solvalues;
+        }
+    }
+
+   	return vals;
+}
+
+geometry_msgs::Pose toPose(IkReal *trans, IkReal *rot)
+{
+	Eigen::Matrix<double,4,4> m;
+    for(int i=0;i<3;i++) {
+    	if(trans[i]!=trans[i] || abs(trans[i]) > 6.3){
+    		return geometry_msgs::Pose();
+    		trans[i]=0;
+    	}
+    	m(i,3) = trans[i];
+    	m(3,i) = 0;
+    }
+    for(int i=0;i<9;i++){
+
+    	if(rot[i]!=rot[i] || abs(rot[i]) > 6.3){
+    		return geometry_msgs::Pose();
+    		rot[i]=0;
+    	}
+    	m(i/3, i%3) = rot[i];
+	}
+
+
+   	m(3,3) = 1;
+
+    Eigen::Affine3d p(m);
+
+   	// cout << p.matrix() << endl;
+
+   	geometry_msgs::Pose pose;
+
+   	tf::poseEigenToMsg(p, pose);
+
+   	pose = normalize(pose);
+
+   	
+
+   	// cout << pose << endl;
+   	/*
+
+   	tf::poseMsgToEigen(pose, p);
+
+   	cout << p.matrix() << endl;
+
+	*/
+   	//inverseK(pose);
+
+   	return pose;
+}
+
+geometry_msgs::Pose forwardK(double joints[])
+{
+	IkReal *j = joints;
+	IkReal *trans = new IkReal[4];
+    IkReal *rot= new IkReal[9];
+
+    for(int i=0;i<9;i++)
+    	rot[i] = 0;
+    
+	// for(int i=0;i<5;i++)
+	// 	cout << j[i] << " ";
+	// cout << endl;
+
+    ComputeFk(j, trans, rot);
+
+    // for(int i=0;i<9;i++)
+    // {
+    // 	printf("%.4f, ", rot[i]);
+    //     // cout << rot[i] << " ";
+    //     if(i%3 == 2)
+    //     	printf("%.4f \n", trans[i/3]);
+    //         // cout << trans[i/3] << endl;
+    // }
+    // cout << endl;
+
+
+    geometry_msgs::Pose pose;
+    pose = toPose(trans, rot);
+
+
+
+    return pose;
+}
+
+geometry_msgs::Pose forwardK(vector<double> vals)
+{
+	double *joints = new double[5];
+	for(int i=0;i<5;i++)
+		joints[i] = vals[i];
+	return forwardK(joints);
+}
+
+
+
+void runFK()
+{
+    IkReal *j = new IkReal[5];
+    for(int i=0;i<5;i++)
+        cin >> j[i];
+
+    IkReal *trans = new IkReal[4];
+    IkReal *rot= new IkReal[9];
+    cout << "OK" << endl;
+    ComputeFk(j, trans, rot);
+    cout << "after" << endl;
+    if(trans!=NULL)
+    {
+        cout << "( ";
+        cout << trans[0] << ", ";
+        cout << trans[1] << ", ";
+        cout << trans[2] << " )";
+        cout << endl;
+    }
+
+    if(rot!=NULL)
+    {
+        cout << "[ ";
+        for(int i=0;i<9;i++)
+        {
+            cout << rot[0];
+            if(i%3 == 2)
+                cout << endl;
+            else
+                cout << ", ";
+        }
+        cout << " ]" << endl;
+    }
+
+    cout << " ------- OR ------- " << endl << endl;
+
+    for(int i=0;i<9;i++)
+    {
+        cout << rot[0] << " ";
+        if(i%3 == 2)
+            cout << trans[i/3] << " ";
+    }
+    cout << endl;
+
+    cout << " ------- AFTER IK ------- " << endl << endl;    
+
+    IkSolutionList<IkReal> solutions;
+
+    ComputeIk(trans, rot, NULL, solutions);
+    cout << solutions.GetNumSolutions() << endl;
+
+    printf("Found %d ik solutions:\n", (int)solutions.GetNumSolutions());
+    std::vector<IkReal> solvalues(GetNumJoints());
+    for(std::size_t i = 0; i < solutions.GetNumSolutions(); ++i) {
+        const IkSolutionBase<IkReal>& sol = solutions.GetSolution(i);
+        printf("sol%d (free=%d): ", (int)i, (int)sol.GetFree().size());
+        std::vector<IkReal> vsolfree(sol.GetFree().size());
+        sol.GetSolution(&solvalues[0],vsolfree.size()>0?&vsolfree[0]:NULL);
+        for( std::size_t j = 0; j < solvalues.size(); ++j)
+            printf("%.15f, ", solvalues[j]);
+        printf("\n");
+    }
+}
 
 int kbhit(void)
 {
@@ -356,7 +604,11 @@ double lambda = 0.9;
 
 //double W_v = 0.9, W_s = 0.1, W_e = 10;
 
-double W_v = 0.9, W_s = 0.1, W_e = 10;
+// double W_v = 0.9, W_s = 0.06, W_e = 10;
+
+// double W_v = 1.2, W_s = 0.06, W_e = 10;
+
+double W_v = 6, W_s = 0.1, W_e = 5;
 
 double A_e = 1;
 
@@ -374,6 +626,9 @@ W_s = 0.025 --> done : js worked better
 
 vector <double> inv_kin(geometry_msgs::Pose pose, int leg)
 {
+	return inverseK(pose);
+
+
 	string group = "LEG" + std::to_string(leg);
     robot_state::RobotStatePtr state(new robot_state::RobotState(kinematic_model));
    	const robot_state::JointModelGroup* jmg = state->getJointModelGroup(group);
@@ -390,6 +645,9 @@ vector <double> inv_kin(geometry_msgs::Pose pose, int leg)
 
 geometry_msgs::Pose fw_kin(vector <double> joints, int leg)
 {
+	return forwardK(joints);
+
+
 	leg = 1;
 	string group = "LEG" + std::to_string(leg);
 	string ee_link_name = "leg"+std::to_string(leg)+"link5";
@@ -531,20 +789,6 @@ vector <trajectory_msgs::JointTrajectoryPoint> interpolate(int leg,
     
     return traj;
 }
-geometry_msgs::Pose normalize(geometry_msgs::Pose pose)
-{
-	double val = sqrt(pose.orientation.x * pose.orientation.x +
-						pose.orientation.y * pose.orientation.y +
-					 	pose.orientation.z * pose.orientation.z +
-					 	pose.orientation.w * pose.orientation.w);
-		
-	pose.orientation.x /= val;
-	pose.orientation.y /= val;
-	pose.orientation.z /= val;
-	pose.orientation.w /= val;
-
-	return pose;
-}
 
 geometry_msgs::Pose interp(geometry_msgs::Pose from, geometry_msgs::Pose to, double alpha)
 {
@@ -584,16 +828,16 @@ vector <trajectory_msgs::JointTrajectoryPoint> alpha_interpolate(int leg,
     // times.push_back(t1);
 
     vector< trajectory_msgs::JointTrajectoryPoint> traj;
-    //trajectory_msgs::JointTrajectory traj;
-    robot_state::RobotStatePtr state(new robot_state::RobotState(kinematic_model));
+    
+    // robot_state::RobotStatePtr state(new robot_state::RobotState(kinematic_model));
 
-    string ee_link_name = "leg"+std::to_string(leg)+"link5";
-    //ee_link_name = "leg1link5";
+    // string ee_link_name = "leg"+std::to_string(leg)+"link5";
     
     
-    const robot_state::LinkModel * ee_link =  state->getLinkModel(ee_link_name);
+    
+    // const robot_state::LinkModel * ee_link =  state->getLinkModel(ee_link_name);
 
-    const robot_state::JointModelGroup* joint_model_group = kinematic_model->getJointModelGroup("LEG"+std::to_string(leg));
+    // const robot_state::JointModelGroup* joint_model_group = kinematic_model->getJointModelGroup("LEG"+std::to_string(leg));
     
     
     if(alpha>1)
@@ -602,6 +846,8 @@ vector <trajectory_msgs::JointTrajectoryPoint> alpha_interpolate(int leg,
     	alpha = 0;
 
 
+    vector<double> old = vector<double> (current);    
+
     int count = 0;
     for(int i=0;i<steps-1;i++) {
         
@@ -609,31 +855,93 @@ vector <trajectory_msgs::JointTrajectoryPoint> alpha_interpolate(int leg,
         
         if(timestamp < 0)
         	continue;
+
+        // usleep(100000);
         
         double beta = double(i+1)/double(steps);
         geometry_msgs::Pose wpose = interp(from, to, beta);
 
 
         vector <double> vals = vector<double> (current);
+        // cout << "--- " << i << " -------" << endl;
+
+        // cout << " CURRENT " << start << " : " ;
+        // for(int j = 0;j<5;j++)
+        // 	cout << current[j] << " ";
+        // cout << endl;
+
+        // cout << " INTERP: ";
+
         for(int j = 0;j<5;j++)
+        {
         	vals[j] += (next[j]-current[j]) * (i+1) / steps;
-        
-        geometry_msgs::Pose jpose = normalize(fw_kin(vals, leg));
+        	// cout << vals[j] << "   ";
+        }
+        // cout << endl;
+
+        // cout << " NEXT   " << end << " : ";
+        // for(int j = 0;j<5;j++)
+        // 	cout << next[j] << " ";
+        // cout << endl;
+
+        geometry_msgs::Pose jpose = /*normalize*/(fw_kin(vals, 1));
+        // jpose = /*normalize*/(fw_kin(vals, 1));
 
 	    geometry_msgs::Pose pose = interp(jpose, wpose, alpha);		
-		       
+
+	    // cout << pose << endl;
+
+	    // continue;
+
+	    // for(int j = 0;j<5;j++)
+	    // vals =  inv_kin(pose, 1);
+
+	   	/*
+	    cout << "+++ ";
+	    for(int j=0;j<5;j++)
+	    	cout << vals[j] << "   ";
+		cout << endl;       
+
+		geometry_msgs::Pose new_pose = normalize(fw_kin(vals, leg));
+
+		cout << new_pose << endl;
+
+		*/
 		/////////////
     
         Eigen::Affine3d ee_pose;
         tf::poseMsgToEigen(pose, ee_pose);    
         //tf::poseMsgToEigen(to, ee_to);
-        bool found_ik = state->setFromIK(joint_model_group, ee_pose, 10, 1);
+        //bool found_ik = state->setFromIK(joint_model_group, ee_pose, 10, 1);
         
+        // vals = inv_kin(pose, 1);
+        vals = inverseK(pose, old);
+        // cout << "after_inverse" << endl;
+        bool found_ik = (vals.size() > 0);
+        // cout << "after_found_ik" << endl;
+        // cout << "after_old" << endl;
+
         //cout << pose << endl;
+
+        // cout << "+++ ";
+		//continue;
         
         if(found_ik) 
-        {     
-            robot_state::RobotStatePtr new_state(new robot_state::RobotState(*state.get()));
+        {   
+        	old = vector<double> (vals);  
+
+		 //    for(int j=0;j<5;j++)
+		 //    	printf("%.15f, ", vals[j]);;
+			// cout << endl;       
+
+            // robot_state::RobotStatePtr new_state(new robot_state::RobotState(*state.get()));
+
+            string group = "LEG" + std::to_string(leg);
+			string ee_link_name = "leg"+std::to_string(leg)+"link5";
+		    robot_state::RobotStatePtr new_state(new robot_state::RobotState(kinematic_model));
+		   	const robot_state::JointModelGroup* jmg = new_state->getJointModelGroup(group);
+			new_state->setJointGroupPositions(jmg, vals);
+
             invert(new_state);  
             
             trajectory_msgs::JointTrajectoryPoint point;
@@ -642,7 +950,12 @@ vector <trajectory_msgs::JointTrajectoryPoint> alpha_interpolate(int leg,
 
             count++;
         }
+        else
+        	cout << "NOT FOUND" <<  endl;
+
+        // cout << endl << endl;
     }
+
     //cout << "percent: " << double(count)*100/double(steps) << endl;
 
     //if(result<0.7)
@@ -728,6 +1041,7 @@ trajectory_msgs::JointTrajectory cycle(int leg,
             }
             else {
             
+            	current = (size-j)%size;
             	next = (size-j-1)%size;
                 // states = interpolate(leg, poses[(size-j)%size], poses[(size-j-1)%size], times[(size-j-1)%size], timestamp); 
 
@@ -788,7 +1102,7 @@ void f(vector<T> s)
     cout << endl;
 }
 
-
+double galpha = 0.5;
 
 void run(vector<double> gait, int count, int leg = 1)
 {
@@ -804,9 +1118,10 @@ void run(vector<double> gait, int count, int leg = 1)
 	double t4 = t * a4;
 
 	double alpha = gait[gait.size()-1];
-
+	alpha = gait[24];
  /*****************************************************************************************************************************************************/
-	alpha = 0.5 * 0;
+	alpha = galpha;
+
 	
 	//cout << t1 << endl << t2  << endl << t3 << endl << t4 << endl;
 	
@@ -849,6 +1164,8 @@ void run(vector<double> gait, int count, int leg = 1)
 	for(int i=1;i<=4;i++)    
 		follow[i].publish(traj[i]);
 	//cycle(leg, poses, times, count, (leg%2)*(-t/2));
+
+	cout << "ALPHA = " << alpha << endl;
 	
 }
 
@@ -1057,32 +1374,47 @@ Result fake_measure(double delay = 0, double period = 20)
 
 double ar = 0.1;
 double tr = 0.2;
-double ranges[24] = { NARROW, NARROW, NARROW, NARROW, 
+
+double starter[25] = { NARROW, NARROW, NARROW, NARROW, 
                      WIDE, NARROW, NARROW, MED,MED,
                      WIDE, NARROW, NARROW, MED,MED,
                      WIDE, NARROW, NARROW, MED,MED,
-                     WIDE, NARROW, NARROW, MED,MED
-                      };
+                     WIDE, NARROW, NARROW, MED,MED,
+                     MED };
+
+
+double ranges[25] = { NARROW, NARROW, NARROW, NARROW, 
+                     WIDE, NARROW, NARROW, MED,MED,
+                     WIDE, NARROW, NARROW, MED,MED,
+                     WIDE, NARROW, NARROW, MED,MED,
+                     WIDE, NARROW, NARROW, MED,MED,
+                     MED };
                       
-double rate[24] = { SLOWEST, SLOWEST, SLOWEST, SLOWEST,
+double rate[25] = { SLOWEST, SLOWEST, SLOWEST, SLOWEST,
 					SLOW, SLOWEST, SLOWEST, SLOWEST, SLOWEST,
 					SLOW, SLOWEST, SLOWEST, SLOWEST, SLOWEST,
 					SLOW, SLOWEST, SLOWEST, SLOWEST, SLOWEST,
-					SLOW, SLOWEST, SLOWEST, SLOWEST, SLOWEST};
+					SLOW, SLOWEST, SLOWEST, SLOWEST, SLOWEST,
+					SLOWEST };
 					
 void shrink(int times = 1) {
 	for(int j = 0;j < times;j++)
-		for(int i = 0;i<24;i++)
+		for(int i = 0;i<25;i++)
    			ranges[i] /= rate[i];  	
 }
 
 void expand(int times = 1) {
 	for(int j = 0;j < times;j++)
-		for(int i = 0;i<24;i++)
+		for(int i = 0;i<25;i++)
    			ranges[i] *= rate[i];  	
 }
 
-double changes[24];
+void reset() {
+	for(int i = 0;i<25;i++)
+   			ranges[i] = starter[i];
+}
+
+double changes[25];
 
 vector <double> sample(vector <double> gait, double coef = 1)
 {
@@ -1124,6 +1456,11 @@ vector <double> sample(vector <double> gait, double coef = 1)
     ret[2] = a[2]/sum;
     ret[3] = a[3]/sum;
     
+    if(ret[24]<0)
+    	ret[24] = (-ret[24]);
+
+    if(ret[24]>1)
+    	ret[24] = abs(2-ret[24]);
     
     /*
     
@@ -1384,12 +1721,20 @@ vector <double> gait = {  4, 1./4., 1./4., 1./4., //4, 1./2., 1./2., 0.,
    						 // 0, 0.78539, 0, 0, 0,
    						 // 0, 0.78539, 0, 0, 0,
    						 // 0, 0.78539, 0, 0, 0,
-   						 // 0, 0.78539, 0, 0, 0 }; 
+   						 // 0, 0.78539, 0, 0, 0,
+   						 // /* alpha = */ 0.5 }; 
+
+  						 // 0, 0, 0, 0, 0,
+   						//  0, 0, 0, 0, 0,
+   						//  0, 0, 0, 0, 0,
+   						//  0, 0, 0, 0, 0, 
+   						// /* alpha = */ 0.5 }; 
    						 
    						 -0.5, 0, 0, 0, 0,
    						 -0.5, 0.78539, 0, 0, 0,
    						 0.5, 0.78539, 0, 0, 0,
-   						 0.5, 0, 0, 0, 0 }; 
+   						 0.5, 0, 0, 0, 0,
+   						 /* alpha = */ 0.5 }; 
    						 
    						 
   /* 						 
@@ -1501,6 +1846,44 @@ void plan_callback(const moveit_msgs::MotionPlanRequest& msg)
 
 int main(int argc, char **argv)
 {
+	/*
+	Eigen::Affine3d ee_pose;
+	cout << ee_pose.matrix() << endl;
+	Eigen::Matrix<double, 4, 4>  m = ee_pose.matrix();
+
+	for(int i=0;i<4;i++) {
+		for(int j=0;j<4;j++)
+			cout << m(i,j) << " " ;
+		cout << endl;
+	}
+	*/
+
+	geometry_msgs::Pose pose;
+
+	double vals[5] = {0,0,0,0,0};
+
+	for (int i=0;i<100;i++){
+		// pose = forwardK(vals);
+		vector <double> vs = {0,0,0,0,0};
+
+		pose = fw_kin(vs, 1);
+		cout << pose << endl << endl;
+
+		vector<double> last;
+		for(int i = 0;i<5;i++)
+			last.push_back(0);
+
+		vector<double> js = inverseK(pose, last);
+		cout << " -------- ";
+		for(int i=0;i<js.size();i++)
+			cout << js[i] << " ";
+
+		cout << endl;
+	}
+	
+
+	
+
     ros::init(argc, argv, "trajectory_executer");
     ros::NodeHandle node_handle;  
     ros::AsyncSpinner spinner(4);
@@ -1593,11 +1976,23 @@ int main(int argc, char **argv)
             	steps = std::stoi(arg1);
             	continue;
             }
+
+            if(inp=="alpha") {
+            	string arg1;
+            	cin >> arg1;
+            	galpha = std::stoi(arg1);
+            	continue;
+            }
             
             if(inp=="expand") {
             	string arg1;
             	cin >> arg1;
             	expand(std::stoi(arg1));
+            	continue;
+            }
+
+            if(inp=="reset") {
+            	reset();
             	continue;
             }
             	
@@ -1658,15 +2053,18 @@ int main(int argc, char **argv)
             
             if(key == 'o' || key == 'O'){
             	double SAMPLING_RANGE = 0.5;
-	            for(iteration=0;iteration<100;iteration++){
+	            for(iteration=0;iteration<200;iteration++){
 		            cout << "-------- Iteration " << iteration+1 << " --------- " << endl;
 		            cout << "SAMPLE RANGE: " << SAMPLING_RANGE << endl;
 		            gait=improve(gait, SAMPLING_RANGE);
 		            //SAMPLING_RANGE/=sqrt(sqrt(sqrt(2)));
 		            shrink();
 		            
-		            if(iteration>=40 && iteration%20==0)
-		            	expand(10);
+		            // if(iteration>=40 && iteration%20==0)
+		            // 	expand(10);
+
+		            if(iteration>=35 && iteration%20==18)
+		            	expand(18);
 		            	
 	            }
 	            

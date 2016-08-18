@@ -42,7 +42,7 @@ MARK_AS_ADVANCED(GALIB_LIBRARY)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS moveit_core moveit_ros_planning moveit_ros_planning_interface pluginlib cmake_modules roscpp rospy std_msgs message_generation genmsg control_msgs gazebo_msgs)
+find_package(catkin REQUIRED COMPONENTS moveit_core moveit_ros_planning moveit_ros_planning_interface pluginlib cmake_modules roscpp rospy std_msgs message_generation genmsg control_msgs gazebo_msgs ikfast_leg1)
 
 find_package(Eigen REQUIRED)
 
@@ -130,6 +130,7 @@ CATKIN_DEPENDS
 	moveit_core
     moveit_ros_planning_interface
     interactive_markers
+    ikfast_leg1
 #  DEPENDS system_lib
 )
 
@@ -139,7 +140,11 @@ CATKIN_DEPENDS
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-# include_directories(include)
+include_directories(include )
+
+include_directories(${catkin_INCLUDE_DIRS})
+
+#include_directories(${ikfast_leg1_INCLUDE_DIRS})
 
 include_directories(SYSTEM ${EIGEN_INCLUDE_DIRS})
 
