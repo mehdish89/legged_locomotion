@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:include filename="$(find daedalus_description)/urdf/daedalus.gazebo" />
+	<xacro:include filename="$(find daedalus_description)/urdf/materials.xacro" />
+		
+	<!--xacro:property name="scale" value="0.01" /-->
+	<xacro:property name="scale" value="1e-6" />
+	<!--xacro:property name="scale" value="0" /-->
+  <!-- <xacro:property name="m0" value="1" />
+  <xacro:property name="m1" value="1" />
+  <xacro:property name="m2" value="1" />
+  <xacro:property name="m3" value="1" />
+  <xacro:property name="m4" value="1" />
+  <xacro:property name="m5" value="1" /> -->
+
+  <xacro:property name="m0" value="${47.264202 * const}" />
+  <xacro:property name="m1" value="${62.343552 * const}" />
+  <xacro:property name="m2" value="${73.212067 * const}" />
+  <xacro:property name="m3" value="${43.109013 * const}" />
+  <xacro:property name="m4" value="${79.043472 * const}" />
+  <xacro:property name="m5" value="${65.552696 * const}" />
+
+	<macro name="leg" params="suffix parent flipped *origin">
+	
+	<leg_finish suffix="${suffix}"/>
+    
+    <link name="leg${suffix}link0">
+    	<self_collide>1</self_collide>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+          
+
+          <mass value="${m0}"/>
+        <inertia ixx="${92.924561*scale*m0}" ixy="0" ixz="0" iyy="${112.408630*scale*m0}" iyz="0" izz="${106.058662*scale*m0}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link0.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <!-- <mesh filename="package://daedalus_description/meshes/link0.dae"/> -->
+        </geometry>
+      </visual>
+    </link>
+
+    
+
+    <link name="leg${suffix}link1">
+    	<self_collide>1</self_collide>
+    	
+      <inertial>
+        <origin xyz="-0.0236 0 0" rpy="0 0 0"/>
+        <mass value="${m1}"/>
+        <inertia ixx="${256.757294*scale*m1}" ixy="${0.461719*scale*m1}" ixz="${40.230606*scale*m1}" iyy="${280.351624*scale*m1}" iyz="${-1.692201*scale*m1}" izz="${114.922241*scale*m1}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="-0.0236 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link1.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="-0.0236 0 0" rpy="0 0 0"/>
+        <geometry>
+          <!-- <mesh filename="package://daedalus_description/meshes/link1.dae"/> -->
+        </geometry>
+      </visual>
+    </link> 
+
+
+
+    <link name="leg${suffix}link2">
+      <self_collide>1</self_collide>
+      <inertial>
+        <origin xyz="0 0.0371 -0.0015" rpy="0 0 0"/>
+        <mass value="${m2}"/>
+        <inertia ixx="${308.272949*scale*m2}" ixy="0" ixz="0" iyy="${141.348206*scale*m2}" iyz="${-6.197227*scale*m2}" izz="${320.700867*scale*m2}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="0 0.0371 -0.0015" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link2.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="0 0.0371 -0.0015" rpy="0 0 0"/>
+        <geometry>
+          <!-- <mesh filename="package://daedalus_description/meshes/link2.dae"/> -->
+        </geometry>
+      </visual>
+    </link>
+
+    
+    <link name="leg${suffix}link3">
+      <self_collide>1</self_collide>
+      <inertial>
+        <origin xyz=" 0 -0.0041 -0.0371" rpy="0 0 0"/>
+        <mass value="${m3}"/>
+        <inertia ixx="${177.687561*scale*m3}" ixy="0" ixz="0" iyy="${208.616043*scale*m3}" iyz="${-14.718610*scale*m3}" izz="${59.618698*scale*m3}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="0 -0.0041 -0.0371" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link3.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="0 -0.0041 -0.0371" rpy="0 0 0"/>
+        <geometry>
+          <!-- <mesh filename="package://daedalus_description/meshes/link3.dae"/> -->
+        </geometry>
+      </visual>
+    </link>
+
+
+
+    <link name="leg${suffix}link4">
+      <self_collide>1</self_collide>
+      <inertial>
+        <origin xyz="0.0002  -0.0233 -0.0124" rpy="0 0 0"/>
+        <mass value="${m4}"/>
+        <inertia ixx="${609.197083*scale*m4}" ixy="${13.511174*scale*m4}" ixz="${-5.220560*scale*m4}" iyy="${234.447556*scale*m4}" iyz="${179.840118*scale*m4}" izz="${511.354614*scale*m4}"/>
+      </inertial>
+      <collision name="collision">
+        <origin xyz="0.0002  -0.0233 -0.0124" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link4.dae"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="0.0002  -0.0233 -0.0124" rpy="0 0 0"/>
+        <geometry>
+          <!-- <mesh filename="package://daedalus_description/meshes/link4.dae"/> -->
+        </geometry>
+      </visual>
+    </link>
+
+
+     
+
+    <link name="leg${suffix}link5">
+      <self_collide>1</self_collide>
+      <inertial>
+        <origin xyz="-0.0006 -0.0009 -0.0311" rpy="0 0 0"/>
+        <mass value="${m5}"/>
+        <inertia ixx="${385.638153*scale*m5}" ixy="${-0.223889*scale*m5}" ixz="${-13.452513*scale*m5}" iyy="${286.320038*scale*m5}" iyz="${-3.575976*scale*m5}" izz="${338.489807*scale*m5}"/>
+      </inertial>
+      <collision name="collision">
+        <surface>
+			<friction>
+				<ode>
+					<mu>100</mu>
+					<mu2>10</mu2>
+				</ode>
+			</friction>
+		</surface>
+        <origin xyz="-0.0006 -0.0009 -0.0311" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://daedalus_description/meshes/link5.dae"/>
+          
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <origin xyz="-0.0006 -0.0009 -0.0311" rpy="0 0 0"/>
+        <geometry>
+          <!-- <mesh filename="package://daedalus_description/meshes/link5.dae"/> -->
+          
+          <box size="0.01 0.01 0.01" />
+          
+        </geometry>
+      </visual>
+    </link> <!-- -->
+    
+    
+    <joint type="fixed" name="leg${suffix}joint0">
+      
+      <child link="leg${suffix}link0"/>
+      <parent link="${parent}"/>
+      <insert_block name="origin" />
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <joint type="revolute" name="leg${suffix}joint1">
+      <origin xyz="-0.0249 0 0.0205" rpy="0 0 0"/>
+      <child link="leg${suffix}link1"/>
+      <parent link="leg${suffix}link0"/>"
+      <axis xyz="0 0 -1"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="10"/>
+    </joint>
+
+    
+     <joint type="revolute" name="leg${suffix}joint2">
+      <origin xyz="-0.0309 0.0002 0.0381" rpy="${3.14159/2} 0 ${3.14159 * flipped}"/>
+      <child link="leg${suffix}link2"/>
+      <parent link="leg${suffix}link1"/>
+      <axis xyz="${1 - 2 * flipped} 0 0"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="10"/>
+    </joint>
+
+
+
+    <joint type="revolute" name="leg${suffix}joint3">
+      <origin xyz="0 0.0564 -0.0208" rpy="0 0 0"/>
+      <child link="leg${suffix}link3"/>
+      <parent link="leg${suffix}link2"/>
+      <axis xyz="${2 * flipped - 1} 0 0"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="10"/>
+    </joint>
+
+    
+
+    <joint type="revolute" name="leg${suffix}joint4">
+      <origin xyz="0 -0.0171 -0.0742" rpy="${-3.14159/4} 0 0"/>
+      <child link="leg${suffix}link4"/>
+      <parent link="leg${suffix}link3"/>
+      <axis xyz="${2 * flipped - 1} 0 0"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="10"/>
+    </joint>
+
+
+
+
+    <joint type="revolute" name="leg${suffix}joint5">
+      <origin xyz="-0.0004 -0.0411 -0.0248" rpy="0 0 0"/>
+      <child link="leg${suffix}link5"/>
+      <parent link="leg${suffix}link4"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="10"/>
+    </joint> <!-- -->
+    
+<transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="leg${suffix}joint1">
+	      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="leg${suffix}joint2">
+	      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="leg${suffix}joint3">
+	      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="leg${suffix}joint4">
+	      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="leg${suffix}joint5">
+	      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+    		
+	</macro>
+</robot>
+

@@ -19,6 +19,8 @@
 #include "gazebo_msgs/LinkStates.h"
 #include "sensor_msgs/JointState.h"
 
+#include <geometry_msgs/PoseArray.h>
+
 #include "daedalus_control/Stats.h"
 
 #include <eigen_conversions/eigen_msg.h>
@@ -608,7 +610,17 @@ double lambda = 0.9;
 
 // double W_v = 1.2, W_s = 0.06, W_e = 10;
 
-double W_v = 6, W_s = 0.1, W_e = 5;
+// double W_v = 6, W_s = 0.1, W_e = 5;
+
+//
+
+// double W_v = 3, W_s = 0.1, W_e = 3;
+
+// double W_v = 6, W_s = 0.06, W_e = 3;
+
+// double W_v = 3, W_s = 0.06, W_e = 8;
+
+double W_v = 3, W_s = 0.06, W_e = 6;
 
 double A_e = 1;
 
@@ -807,6 +819,9 @@ geometry_msgs::Pose interp(geometry_msgs::Pose from, geometry_msgs::Pose to, dou
 }
 
 
+vector <geometry_msgs::Pose> *loop;
+
+
 vector <trajectory_msgs::JointTrajectoryPoint> alpha_interpolate(int leg, 
 																vector<double> gait,
 																vector<geometry_msgs::Pose> poses,
@@ -823,27 +838,16 @@ vector <trajectory_msgs::JointTrajectoryPoint> alpha_interpolate(int leg,
 
 	vector<double> current = vector<double> (gait.begin()+4+start*5,gait.begin()+9+start*5);
 	vector<double> next = vector<double> (gait.begin()+4+end*5,gait.begin()+9+end*5);
-    // pose = fw_kin(current, leg);
-    // poses.push_back(pose);
-    // times.push_back(t1);
 
     vector< trajectory_msgs::JointTrajectoryPoint> traj;
     
-    // robot_state::RobotStatePtr state(new robot_state::RobotState(kinematic_model));
 
-    // string ee_link_name = "leg"+std::to_string(leg)+"link5";
-    
-    
-    
-    // const robot_state::LinkModel * ee_link =  state->getLinkModel(ee_link_name);
-
-    // const robot_state::JointModelGroup* joint_model_group = kinematic_model->getJointModelGroup("LEG"+std::to_string(leg));
-    
-    
     if(alpha>1)
     	alpha = 1;
     if(alpha<0)
     	alpha = 0;
+
+    
 
 
     vector<double> old = vector<double> (current);    
@@ -856,85 +860,38 @@ vector <trajectory_msgs::JointTrajectoryPoint> alpha_interpolate(int leg,
         if(timestamp < 0)
         	continue;
 
-        // usleep(100000);
         
         double beta = double(i+1)/double(steps);
         geometry_msgs::Pose wpose = interp(from, to, beta);
 
 
         vector <double> vals = vector<double> (current);
-        // cout << "--- " << i << " -------" << endl;
-
-        // cout << " CURRENT " << start << " : " ;
-        // for(int j = 0;j<5;j++)
-        // 	cout << current[j] << " ";
-        // cout << endl;
-
-        // cout << " INTERP: ";
 
         for(int j = 0;j<5;j++)
         {
         	vals[j] += (next[j]-current[j]) * (i+1) / steps;
-        	// cout << vals[j] << "   ";
+        
         }
-        // cout << endl;
+        
 
-        // cout << " NEXT   " << end << " : ";
-        // for(int j = 0;j<5;j++)
-        // 	cout << next[j] << " ";
-        // cout << endl;
-
-        geometry_msgs::Pose jpose = /*normalize*/(fw_kin(vals, 1));
-        // jpose = /*normalize*/(fw_kin(vals, 1));
+        geometry_msgs::Pose jpose = fw_kin(vals, 1);
+        
 
 	    geometry_msgs::Pose pose = interp(jpose, wpose, alpha);		
 
-	    // cout << pose << endl;
-
-	    // continue;
-
-	    // for(int j = 0;j<5;j++)
-	    // vals =  inv_kin(pose, 1);
-
-	   	/*
-	    cout << "+++ ";
-	    for(int j=0;j<5;j++)
-	    	cout << vals[j] << "   ";
-		cout << endl;       
-
-		geometry_msgs::Pose new_pose = normalize(fw_kin(vals, leg));
-
-		cout << new_pose << endl;
-
-		*/
-		/////////////
+	    loop->push_back(pose);
+	   
     
         Eigen::Affine3d ee_pose;
         tf::poseMsgToEigen(pose, ee_pose);    
-        //tf::poseMsgToEigen(to, ee_to);
-        //bool found_ik = state->setFromIK(joint_model_group, ee_pose, 10, 1);
         
-        // vals = inv_kin(pose, 1);
         vals = inverseK(pose, old);
-        // cout << "after_inverse" << endl;
         bool found_ik = (vals.size() > 0);
-        // cout << "after_found_ik" << endl;
-        // cout << "after_old" << endl;
-
-        //cout << pose << endl;
-
-        // cout << "+++ ";
-		//continue;
+        
         
         if(found_ik) 
         {   
         	old = vector<double> (vals);  
-
-		 //    for(int j=0;j<5;j++)
-		 //    	printf("%.15f, ", vals[j]);;
-			// cout << endl;       
-
-            // robot_state::RobotStatePtr new_state(new robot_state::RobotState(*state.get()));
 
             string group = "LEG" + std::to_string(leg);
 			string ee_link_name = "leg"+std::to_string(leg)+"link5";
@@ -965,13 +922,13 @@ vector <trajectory_msgs::JointTrajectoryPoint> alpha_interpolate(int leg,
 }
 
 
-trajectory_msgs::JointTrajectory cycle(int leg,
+trajectory_msgs::JointTrajectory cycle( int leg,
 										vector<double> gait,
 										vector<geometry_msgs::Pose> poses, 
 										vector <double> times, 
 										int count = 5, 
 										double delay = 0,
-										double alpha = 0.5)
+										double alpha = 0.5 )
 {
     string group = "LEG" + std::to_string(leg);
     robot_state::RobotStatePtr state(new robot_state::RobotState(kinematic_model));
@@ -1017,7 +974,7 @@ trajectory_msgs::JointTrajectory cycle(int leg,
 
     for(int i = 0;i<=count;i++){
         int size = poses.size();
-        
+        loop = new vector<geometry_msgs::Pose>();
         for(int j=0;j<size;j++){
             vector< trajectory_msgs::JointTrajectoryPoint> states;
             double dur;
@@ -1102,7 +1059,7 @@ void f(vector<T> s)
     cout << endl;
 }
 
-double galpha = 0.5;
+double galpha = -1;
 
 void run(vector<double> gait, int count, int leg = 1)
 {
@@ -1119,11 +1076,11 @@ void run(vector<double> gait, int count, int leg = 1)
 
 	double alpha = gait[gait.size()-1];
 	alpha = gait[24];
- /*****************************************************************************************************************************************************/
-	alpha = galpha;
+ /*******************************************************************************/
 
-	
-	//cout << t1 << endl << t2  << endl << t3 << endl << t4 << endl;
+	if(galpha>=0)
+		alpha = galpha;
+
 	
 	geometry_msgs::Pose pose;
 	vector<geometry_msgs::Pose> poses;
@@ -1763,7 +1720,7 @@ Gait read(string file, int index, int sample = 0)
 {
 	ifstream fin(file);
 	string tmp;
-	vector <double> gait(24);
+	vector <double> gait(25);
 	
 	while(true) {
 		int iteration;
@@ -1842,7 +1799,26 @@ void plan_callback(const moveit_msgs::MotionPlanRequest& msg)
 	cnt++;
 }
 
+ros::Publisher loop_pub;
 
+void log_loop()
+{
+	run(gait, 1);
+	geometry_msgs::PoseArray array;
+
+	array.poses = *loop;
+
+	loop_pub.publish(array);	
+}
+
+void log_all(string file)
+{
+	for(int i=0;i<800;i++){
+		gait = read(file, i);
+		log_loop();
+	}
+
+}
 
 int main(int argc, char **argv)
 {
@@ -1892,6 +1868,8 @@ int main(int argc, char **argv)
     follow = new ros::Publisher[20];
     
     stat_pub = node_handle.advertise<daedalus_control::Stats>("/daedalus/stats", 1);
+
+    loop_pub = node_handle.advertise<geometry_msgs::PoseArray>("/loop", 1);
     
     last_time = ros::Time::now();
     
@@ -1980,7 +1958,7 @@ int main(int argc, char **argv)
             if(inp=="alpha") {
             	string arg1;
             	cin >> arg1;
-            	galpha = std::stoi(arg1);
+            	galpha = std::stof(arg1);
             	continue;
             }
             
@@ -1993,6 +1971,18 @@ int main(int argc, char **argv)
 
             if(inp=="reset") {
             	reset();
+            	continue;
+            }
+
+            if(inp=="loop") {
+            	log_loop();
+            	continue;
+            }
+
+            if(inp=="loopall") {
+            	string arg1;
+            	cin >> arg1;
+            	log_all(arg1);
             	continue;
             }
             	
@@ -2053,7 +2043,7 @@ int main(int argc, char **argv)
             
             if(key == 'o' || key == 'O'){
             	double SAMPLING_RANGE = 0.5;
-	            for(iteration=0;iteration<200;iteration++){
+	            for(iteration=0;iteration<800;iteration++){
 		            cout << "-------- Iteration " << iteration+1 << " --------- " << endl;
 		            cout << "SAMPLE RANGE: " << SAMPLING_RANGE << endl;
 		            gait=improve(gait, SAMPLING_RANGE);
@@ -2063,8 +2053,8 @@ int main(int argc, char **argv)
 		            // if(iteration>=40 && iteration%20==0)
 		            // 	expand(10);
 
-		            if(iteration>=35 && iteration%20==18)
-		            	expand(18);
+		            if(iteration>=35 && iteration%20==19)
+		            	expand(19);
 		            	
 	            }
 	            
