@@ -16,6 +16,22 @@ FIND_PATH(GALIB_INCLUDE_DIR
 )
 
 #
+# C++11 Support
+#
+
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+if(COMPILER_SUPPORTS_CXX11)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+elseif(COMPILER_SUPPORTS_CXX0X)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+else()
+        message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+endif()
+
+
+#
 # Find the library
 #
 FIND_LIBRARY(GALIB_LIBRARY
@@ -166,10 +182,10 @@ add_executable(daedalus_control_mapper src/daedalus_control_mapper.cpp)
 target_link_libraries(daedalus_control_mapper ${catkin_LIBRARIES})
 add_dependencies(daedalus_control_mapper daedalus_control_mapper_generate_messages_cpp)
 
-add_executable(gait_controller src/gait_controller.cpp)
-target_link_libraries(gait_controller ${catkin_LIBRARIES})
-target_link_libraries(gait_controller /usr/local/lib/libga.a)
-add_dependencies(gait_controller gait_controller_generate_messages_cpp)
+#add_executable(gait_controller src/gait_controller.cpp)
+#target_link_libraries(gait_controller ${catkin_LIBRARIES})
+#target_link_libraries(gait_controller /usr/local/lib/libga.a)
+#add_dependencies(gait_controller gait_controller_generate_messages_cpp)
 
 add_executable(gait_controller_robot src/gait_controller_robot.cpp)
 target_link_libraries(gait_controller_robot ${catkin_LIBRARIES})
@@ -252,5 +268,5 @@ add_dependencies(js_js_unlimited js_js_unlimited_generate_messages_cpp)
 # catkin_add_nosetests(test)
 
 ## Mine for adding c++11
-list( APPEND CMAKE_CXX_FLAGS "-I ${GALIB_INCLUDE_DIRS} -std=c++0x ${CMAKE_CXX_FLAGS}  -g -ftest-coverage -fprofile-arcs")
+	#list( APPEND CMAKE_CXX_FLAGS "-I ${GALIB_INCLUDE_DIRS}  -g -ftest-coverage -fprofile-arcs")
 
