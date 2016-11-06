@@ -7,7 +7,8 @@
   <arg name="debug" default="false" />
 
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-    	<arg name="world_name" value="$(find daedalus_gazebo)/worlds/daedalus.world"/>
+    	<arg name="world_name" value="$(find daedalus_gazebo)/../terrain/rough_100x100.world"/>
+	<!--arg name="world_name" value="$(find daedalus_gazebo)/worlds/daedalus.world"/-->
     	<!-- more default parameters can be changed here -->
 	</include>		
 
@@ -18,7 +19,8 @@
     <arg name="load_robot_description" value="true"/>
   </include>
 
-	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"  output="screen" args=" -urdf -z 0.0197 -model daedalus -param robot_description" />
+	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"  output="screen" args=" -urdf -z 0.2197 -model daedalus -param robot_description" />
+	<!--node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"  output="screen" args=" -urdf -z 0.0197 -model daedalus -param robot_description" /-->
 
     <include file="$(find daedalus_moveit)/launch/daedalus_moveit_trajectory_manager.launch"/>
     

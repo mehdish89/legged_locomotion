@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="rough_100x100">
+      <pose>0 0 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+		<uri>/home/mehdi/catkin_ws/src/legged_locomotion/src/terrain/20x20.dae</uri>
+		 
+	    </mesh>
+          </geometry>
+        </visual>
+
+	<collision name="collision">
+          <geometry>
+            <mesh>
+		<uri>/home/mehdi/catkin_ws/src/legged_locomotion/src/terrain/20x20.dae</uri>
+		 
+	    </mesh>
+          </geometry>
+        </collision>
+	
+      </link>
+    </model>
+  </world>
+</sdf>
