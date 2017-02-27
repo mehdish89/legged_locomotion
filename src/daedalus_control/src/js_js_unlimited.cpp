@@ -22,6 +22,7 @@
 #include <geometry_msgs/PoseArray.h>
 
 #include "daedalus_control/Stats.h"
+#include "daedalus_control/Eval.h"
 
 #include <eigen_conversions/eigen_msg.h>
 
@@ -38,6 +39,15 @@
 
 
 #include "ikfast.h"
+
+
+#include <boost/thread/thread.hpp>
+#include <boost/thread/mutex.hpp>
+#include <boost/bind.hpp>
+
+#include <mutex>   
+
+boost::mutex io_mutex;
 
 
 using namespace std;
@@ -1127,24 +1137,8 @@ void run(vector<double> gait, int count, int leg = 1)
 }
 
 
-Result measure(vector<double> gait, int count)
-{
-
-	
-	
-    
-
-    /*run(gait[0], 
-        gait[1],
-        gait[2],
-        gait[3],
-        gait[4],
-        gait[5],
-        gait[6],
-        count );*/
-    
-    
-    
+Result instant_measure(vector<double> gait, int count)
+{   
     run(gait, count);
     
     reset_world();
@@ -1185,6 +1179,7 @@ Result measure(vector<double> gait, int count)
     do{
         en = get_secs();
         ros::spinOnce();
+        cout<< en-st << endl;
     }
 	while(en-st<20);
 	//while(en-st<gait[0]*count);
@@ -1221,6 +1216,102 @@ Result measure(vector<double> gait, int count)
     cout << endl;
 	show_result(result);
 	return result;
+}
+
+Result measure(vector<double> gait, int count)
+{
+
+    
+    
+    
+
+    /*run(gait[0], 
+        gait[1],
+        gait[2],
+        gait[3],
+        gait[4],
+        gait[5],
+        gait[6],
+        count );*/
+    
+    
+    
+    run(gait, count);
+    
+    reset_world();
+    
+    updated = false;
+    while(!updated)
+        ros::spinOnce();
+
+    ros::Duration dur(4);
+    dur.sleep();
+    
+    cout << "Start to measure" << endl;
+    
+    double sx = gx, sy = gy, sr = gr;
+    double stability = 0;
+    int code = 0;
+    unsigned long long st, en;
+    
+    
+    v_count = 0;
+    ev = 0;
+    ev2 = 0;
+    
+    sz = 0;
+    sz2 = 0;
+    
+    dist = 0;
+
+    rot_sum = 0;
+    rot_sum2 = 0;
+    
+    work = 0;
+    last_time = ros::Time::now();
+
+    
+    st = get_secs();
+    
+    do{
+        en = get_secs();
+        ros::spinOnce();
+    }
+    while(en-st<20);
+    //while(en-st<gait[0]*count);
+    
+    //cerr << v_count << endl;
+    
+    double rot_dev = sqrt(rot_sum2/v_count);
+    double power = work / (en-st);
+    
+    
+    struct Result result; 
+    result.distance = sqrt(abs(sx-gx) * abs(sx-gx) + abs(sy-gy) * abs(sy-gy));
+    result.msecs = (en - st)*1000;
+    
+    result.wand = abs(dist - result.distance);//  /8;
+    result.stability = 1/(result.wand / result.distance + rot_dev);//dist;
+    
+    if(result.distance<0.05)
+        result.stability = 0;
+    
+    cerr << "Rotation Deviation >> " << rot_dev << endl;
+    cerr << "Translation Total Variation >> " << result.wand << endl;
+    cerr << "Power >> " << power << endl;
+    cerr << "Energy Efficieny >> " << power/result.distance << endl;
+    
+    result.power = power;
+    result.efficiency = power/result.distance;
+    
+    result.code = code;
+    result.rel = rot_dev;
+    result.eff = sz/v_count;
+    for(int i=0;i<gait.size();i++)
+        cout << gait[i] << " ";
+    cout << endl;
+    show_result(result);
+    return result;
 }
 
 
@@ -1820,6 +1911,77 @@ void log_all(string file)
 
 }
 
+std::mutex m_;
+
+class mylock
+{
+    
+
+public:
+    mylock()
+    {
+        cout << "acquiring" << endl;
+        m_.lock();
+    }
+    ~mylock()
+    {
+        cout << "releasing" << endl;
+        m_.unlock();
+    }
+};
+
+bool is_locked = false;
+
+
+bool handle_eval(daedalus_control::Eval::Request  &req,
+         daedalus_control::Eval::Response &res)
+{
+    cout << "new request" << endl;
+    // mylock scopeLock;
+    while(is_locked);
+
+    is_locked = true;
+    //////////////////////////////////////////////////
+
+    Gait gait;
+    for(int i=0;i<req.gait.size();i++){      // 3 - 26: gait parameters
+        gait.push_back(req.gait[i]);
+        // cout << gait[i] << " ";
+    }
+    // cout << endl;
+    ROS_INFO("Evaluating the gait");
+    Result result = instant_measure(gait, req.count);
+
+    ROS_INFO("Evaluating the objective");
+
+    res.objective = objective(result);
+    
+    res.iteration = result.iteration;
+    res.sample = result.sample;
+    
+    res.distance = result.distance;
+    res.stability = result.stability;
+    res.power = result.power;
+    res.efficiency = result.efficiency;
+    res.rel = result.rel;
+    res.eff = result.eff;
+    res.wand = result.wand;
+
+    res.msecs = result.msecs;
+    res.code = result.code;
+
+    ROS_INFO("sending back the result: [%d]", res.objective);
+
+    // ros::Duration(0.5).sleep();
+
+    // mtx.unlock();
+
+    is_locked = false;
+
+    return true;
+}
+
+
 int main(int argc, char **argv)
 {
 	/*
@@ -1883,6 +2045,9 @@ int main(int argc, char **argv)
     ros::Subscriber effort_sub = node_handle.subscribe("/daedalus/joint_states", 1, effort_callback);
     ros::Subscriber effort_sub_2 = node_handle.subscribe("/joint_states", 1, effort_callback);
 
+    // ros::Subscriber req_sub = node_handle.subscribe("/request", 1, handle_request);
+    // res_pub = node_handle.advertise<geometry_msgs::PoseArray>("/loop", 1);
+
     
     rml = new robot_model_loader::RobotModelLoader("robot_description");
     kinematic_model = rml->getModel();
@@ -1902,7 +2067,7 @@ int main(int argc, char **argv)
     //vector <double> gait = {3.9162, 0.105971, 0.0201888, -0.00657353, 0.05955, 0.218181, 0.165312};
     //vector <double> gait = {3.58855, 0.109522, -0.00298116, 0.0235867, 0.0446852, 0.226447, 0.228663 };
     
-    
+    ros::ServiceServer service = node_handle.advertiseService("evaluate", handle_eval);
     
     srand(time(0));
     
@@ -1928,6 +2093,7 @@ int main(int argc, char **argv)
 	
 	// 0.267127 0.125996 0.131267 0.714072 -0.518984 -0.46614 0.058912
 	// 0.267127 0.115996 0.131267 0.714072 -0.518984 -0.46614 0.058912
+
 	
 	int time = 10;
 
