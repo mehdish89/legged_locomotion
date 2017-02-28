@@ -1178,8 +1178,9 @@ Result instant_measure(vector<double> gait, int count)
     
     do{
         en = get_secs();
-        ros::spinOnce();
-        cout<< en-st << endl;
+        // ros::spinOnce();
+        ros::Duration(0.1).sleep();
+        // cout<< en-st << endl;
     }
 	while(en-st<20);
 	//while(en-st<gait[0]*count);
@@ -1931,16 +1932,39 @@ public:
 };
 
 bool is_locked = false;
-
+int scount = 0;
 
 bool handle_eval(daedalus_control::Eval::Request  &req,
          daedalus_control::Eval::Response &res)
 {
-    cout << "new request" << endl;
-    // mylock scopeLock;
-    while(is_locked);
+    mylock lock;
+
+
+    scount++;
+    cout << "new request " << scount  << endl;
+
+    while(is_locked)
+        cout << scount << endl;
+        ros::Duration(0.5).sleep();
 
     is_locked = true;
+
+    
+    // for(int i=0;i<50;i++){
+    //     cout << lcount << endl;
+    //     ros::Duration(0.5).sleep();
+    // }
+
+    // is_locked = false;
+    // return true;
+
+
+    
+    // mylock scopeLock;
+    // while(is_locked)
+    //     ros::Duration(0.5).sleep();
+
+    // is_locked = true;
     //////////////////////////////////////////////////
 
     Gait gait;
@@ -1977,6 +2001,8 @@ bool handle_eval(daedalus_control::Eval::Request  &req,
     // mtx.unlock();
 
     is_locked = false;
+
+    scount--;
 
     return true;
 }
@@ -2257,7 +2283,9 @@ int main(int argc, char **argv)
 			}
 		
         }  
-        ros::spinOnce();
+
+        ros::getGlobalCallbackQueue()->callOne(ros::WallDuration(0.5));
+        // ros::spinOnce();
     }
     
 

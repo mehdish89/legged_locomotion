@@ -132,7 +132,7 @@ include_directories(include)
 #   ${catkin_LIBRARIES}
 # )
 
-set(CMAKE_CXX_FLAGS "-lstdc++ -llapack ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-lstdc++  ${CMAKE_CXX_FLAGS}")
 
 #############
 ## Install ##
