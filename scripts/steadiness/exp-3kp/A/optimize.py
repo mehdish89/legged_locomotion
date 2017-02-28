@@ -12,7 +12,7 @@ lb = [0]*4 + 20*[-math.pi] + [0]
 ub = [2]*4 + 20*[math.pi] + [1]
 
 
-rospy.init_node('test3kp_node')
+rospy.init_node('optimize-3kp-A')
 
 evaluate = rospy.ServiceProxy('evaluate', Eval)
 # count = 1000.

@@ -12,7 +12,7 @@ lb = [0]*4 + 20*[-math.pi] + [0]
 ub = [2]*4 + 20*[math.pi] + [1]
 
 
-rospy.init_node('test4kp_noalpha_node')
+rospy.init_node('optimize-4kp-W')
 
 evaluate = rospy.ServiceProxy('evaluate', Eval)
 # count = 1000.
