@@ -624,12 +624,16 @@ double lambda = 0.9;
 
 //
 
-// double W_v = 3, W_s = 0.1, W_e = 3;
+// stab
+//double W_v = 3, W_s = 0.1, W_e = 3;
 
+// vel
 // double W_v = 6, W_s = 0.06, W_e = 3;
 
 // double W_v = 3, W_s = 0.06, W_e = 8;
 
+
+// ee
 double W_v = 3, W_s = 0.06, W_e = 6;
 
 double A_e = 1;
