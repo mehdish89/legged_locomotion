@@ -40,6 +40,21 @@ def delegate(gait):
   sgait[19:24] = gait[13:18]
   sgait[24] = 1
 
+  t = np.zeros(4)
+  t[0:3] = sgait[1:4] * T
+  t[3] = T - sum(t[0:3])
+
+  for i in range(20):
+    j = i + 4
+    k = (i + 5) % 20 + 4
+
+    dth = abs(sgait[j]-sgait[k])
+    c = int(i/5)
+    dt = t[c]
+
+    if(dth/dt > 2*math.pi):
+      return 1000
+
   print(sgait)
   resp = evaluate(sgait, 20)
   obj = resp.objective
@@ -47,7 +62,7 @@ def delegate(gait):
   return -obj
 
 
-cma.fmin(delegate, gait, 0.2, eval_initial_x=True, options={ 'verb_disp': '1', 'verb_plot': '1'  })  # {'boundary_handling': 'BoundTransform ','bounds': [lb, ub] })
+cma.fmin(delegate, gait, 0.1, eval_initial_x=True, options={ 'verb_disp': '1', 'verb_plot': '1'  })  # {'boundary_handling': 'BoundTransform ','bounds': [lb, ub] })
 # resp = evaluate(gait, count)
 
 # print resp

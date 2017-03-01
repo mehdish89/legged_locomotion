@@ -41,7 +41,7 @@ def delegate(gait):
   return -obj
 
 
-cma.fmin(delegate, gait, 0.2, eval_initial_x=True, options={ 'verb_disp': '1', 'verb_plot': '1'  })  # {'boundary_handling': 'BoundTransform ','bounds': [lb, ub] })
+cma.fmin(delegate, gait, 0.1, eval_initial_x=True, options={ 'verb_disp': '1', 'verb_plot': '1'  })  # {'boundary_handling': 'BoundTransform ','bounds': [lb, ub] })
 # resp = evaluate(gait, count)
 
 # print resp
