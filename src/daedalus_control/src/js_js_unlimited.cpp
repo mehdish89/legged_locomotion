@@ -1186,7 +1186,8 @@ Result instant_measure(vector<double> gait, int count)
         ros::Duration(0.1).sleep();
         // cout<< en-st << endl;
     }
-	while(en-st<20);
+	//while(en-st<20);
+    while(en-st<10);
 	//while(en-st<gait[0]*count);
 	
 	//cerr << v_count << endl;
@@ -1213,6 +1214,10 @@ Result instant_measure(vector<double> gait, int count)
 	result.power = power;
 	result.efficiency = power/result.distance;
 	
+
+    //compensate
+    result.distance *= 2;
+
 	result.code = code;
 	result.rel = rot_dev;
 	result.eff = sz/v_count;
@@ -1282,8 +1287,8 @@ Result measure(vector<double> gait, int count)
         en = get_secs();
         ros::spinOnce();
     }
-    // while(en-st<20);
-    while(en-st<10);
+    while(en-st<20);
+    // while(en-st<10);
     //while(en-st<gait[0]*count);
     
     //cerr << v_count << endl;
@@ -1311,7 +1316,7 @@ Result measure(vector<double> gait, int count)
     result.efficiency = power/result.distance;
     
     //compensate
-    result.distance *= 2;
+    // result.distance *= 2;
 
     result.code = code;
     result.rel = rot_dev;
