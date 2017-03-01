@@ -696,15 +696,31 @@ geometry_msgs::Pose fw_kin(vector <double> joints, int leg)
 
 double objective(Result result)
 {
+    const int eps = 0.00000001;
+
 	double vel = result.distance/((double)result.msecs/1000);
+
+    double v_scale = 0.3;
+    double s_scale = 3;
+    double e_scale = 15;
+
+
+    double v_cost = v_scale / (vel + eps);
+    double s_cost = s_scale / (result.stability + eps);
+    double e_cost = result.efficiency / e_scale;
+
+
 	//return result.distance - result.stability * 0.5;
 	//return result.distance * 1.5 + result.stability * 0 - result.wand * 0.1 - result.rel * 50 + result.eff * 10;
 	//return vel * lambda  - result.stability * (1 - lambda);
 	
 	//return vel * W_v  - result.stability * W_s + W_e / result.efficiency;
 	
-	return vel * W_v  + result.stability * W_s / 3 + W_e / (result.efficiency * A_e);
-	
+	// return vel * W_v  + result.stability * W_s / 3 + W_e / (result.efficiency * A_e);
+
+    double cost = v_cost + s_cost + e_cost;
+
+    return -cost;	
 }
 
 void show_result(Result result)
@@ -1198,7 +1214,7 @@ Result instant_measure(vector<double> gait, int count)
 	
 	struct Result result; 
 	result.distance = sqrt(abs(sx-gx) * abs(sx-gx) + abs(sy-gy) * abs(sy-gy));
-	result.msecs = (en - st)*1000;
+	result.msecs = 2 * (en - st) * 1000;
 	
 	result.wand = abs(dist - result.distance);//  /8;
 	result.stability = 1/(result.wand / result.distance + rot_dev);//dist;
@@ -1211,12 +1227,12 @@ Result instant_measure(vector<double> gait, int count)
 	cerr << "Power >> " << power << endl;
 	cerr << "Energy Efficieny >> " << power/result.distance << endl;
 	
+    //compensate
+    result.distance *= 2;
+
 	result.power = power;
 	result.efficiency = power/result.distance;
 	
-
-    //compensate
-    result.distance *= 2;
 
 	result.code = code;
 	result.rel = rot_dev;
